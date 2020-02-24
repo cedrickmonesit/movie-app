@@ -1,19 +1,17 @@
 import React from "react";
-import { connect } from "react-redux";
-
-import { onInputChange, fetchMovies } from "../actions";
 
 class SearchBar extends React.Component {
-  //This sets the state to the input
   onInputChange = event => {
+    //onInputChange function from props
     this.props.onInputChange(event.target.value);
   };
 
-  //This will send the input to App component for the API request
   onFormSubmit = event => {
-    event.preventDefault(); //Prevents page from refresh entering return key
+    event.preventDefault(); //Prevents page from refresh on submit of form
 
-    //TODO: make sure to call callback from parent APP component
+    //reference MovieList Component for the props
+    //fetchMovies function from props
+    //searchTerm value from props
     this.props.fetchMovies(this.props.searchTerm);
     console.log(this.props);
   };
@@ -23,7 +21,7 @@ class SearchBar extends React.Component {
       <div>
         <form onSubmit={this.onFormSubmit}>
           <div>
-            <label>Video Search</label>
+            <label>Search</label>
             <input
               type="text"
               value={this.props.searchTerm}
@@ -36,10 +34,4 @@ class SearchBar extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { searchTerm: state.searchTerm };
-};
-
-export default connect(mapStateToProps, { fetchMovies, onInputChange })(
-  SearchBar,
-);
+export default SearchBar;

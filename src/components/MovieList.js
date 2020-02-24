@@ -1,6 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import SearchBar from "./SearchBar";
+import { onInputChange, fetchMovies } from "../actions";
+
 class MovieList extends React.Component {
   //TODO: on search submit fetch movies with search term
   /*componentDidMount() {
@@ -32,14 +35,24 @@ class MovieList extends React.Component {
   }
 
   render() {
-    console.log(this.props);
-    return <div>{this.renderList()}</div>; //render posts
+    return (
+      <div>
+        <SearchBar
+          searchTerm={this.props.searchTerm}
+          fetchMovies={this.props.fetchMovies}
+          onInputChange={this.props.onInputChange}
+        />
+        {this.renderList()}
+      </div>
+    ); //render posts
   }
 }
 
 const mapStateToProps = state => {
-  return { movies: state.movieData.results };
+  return { movies: state.movieData.results, searchTerm: state.searchTerm };
   //this is setting what you want to call the data from the api just to use the data
 };
 
-export default connect(mapStateToProps)(MovieList);
+export default connect(mapStateToProps, { fetchMovies, onInputChange })(
+  MovieList,
+);
