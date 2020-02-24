@@ -1,5 +1,3 @@
-//import _ from "lodash"; //import lodash library
-
 import TMDB, { KEY } from "../apis/TMDB"; //Import API & API Key
 
 //action creator
