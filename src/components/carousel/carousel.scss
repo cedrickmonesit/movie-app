@@ -1,0 +1,9 @@
+.slides {
+  position: relative;
+  .slick-prev,
+  .slick-next {
+    position: absolute;
+    top: 50%;
+    background-color: black;
+  }
+}
