@@ -16,26 +16,27 @@ class Carousel extends React.Component {
       return this.props.trending.map(movie => {
         return (
           <div key={movie.id}>
-            <img
-              className="slide-image"
-              src={`http://image.tmdb.org/t/p/w185/${movie.poster_path}`}
-              alt={movie.title}
-            />
-            <p>{movie.title}</p>
+            <div>
+              <img
+                className="slide-image"
+                src={`http://image.tmdb.org/t/p/w185/${movie.poster_path}`}
+                alt={movie.title}
+              />
+              <p>{movie.title}</p>
+            </div>
           </div>
         );
       });
     }
   }
   render() {
-    console.log(this.props.trending);
+    console.log(this.props);
     const settings = {
       dots: true,
       infinite: true,
       speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 4,
-      className: "slides",
+      slidesToShow: 5,
+      slidesToScroll: 5,
     };
 
     return (
