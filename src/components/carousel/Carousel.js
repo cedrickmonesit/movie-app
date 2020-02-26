@@ -1,80 +1,53 @@
-import React, { Component } from "react";
+import React from "react";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.scss";
+import "slick-carousel/slick/slick-theme.scss";
+import { connect } from "react-redux";
 
 import "./carousel.scss";
+import { fetchTrending } from "../../actions";
 
-export default class Responsive extends Component {
+class Carousel extends React.Component {
+  componentDidMount() {
+    this.props.fetchTrending();
+  }
+  mapTrending() {
+    if (this.props.trending) {
+      return this.props.trending.map(movie => {
+        return (
+          <div key={movie.id}>
+            <img
+              className="slide-image"
+              src={`http://image.tmdb.org/t/p/w185/${movie.poster_path}`}
+              alt={movie.title}
+            />
+            <p>{movie.title}</p>
+          </div>
+        );
+      });
+    }
+  }
   render() {
-    var settings = {
+    console.log(this.props.trending);
+    const settings = {
       dots: true,
-      arrows: true,
-      infinite: false,
+      infinite: true,
       speed: 500,
       slidesToShow: 4,
       slidesToScroll: 4,
-      initialSlide: 0,
       className: "slides",
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            infinite: true,
-            dots: true,
-            arrows: true,
-          },
-        },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
-            initialSlide: 2,
-          },
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: false,
-          },
-        },
-      ],
     };
+
     return (
-      <div>
-        <h2> Responsive </h2>
-        <Slider {...settings}>
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
-          <div>
-            <h3>7</h3>
-          </div>
-          <div>
-            <h3>8</h3>
-          </div>
-        </Slider>
+      <div className="slider-container">
+        <Slider {...settings}>{this.mapTrending()}</Slider>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return { trending: state.trendingData.results };
+};
+
+export default connect(mapStateToProps, { fetchTrending })(Carousel);

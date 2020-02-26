@@ -5,10 +5,10 @@ import Carousel from "./carousel/Carousel";
 
 const App = () => {
   return (
-    <div>
+    <React.Fragment>
       <MovieList />
       <Carousel />
-    </div>
+    </React.Fragment>
   );
 };
 

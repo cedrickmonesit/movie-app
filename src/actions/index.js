@@ -27,3 +27,13 @@ export const onInputChange = searchTerm => {
     payload: searchTerm,
   };
 };
+
+//action creator
+//carousel action
+export const fetchTrending = () => async dispatch => {
+  const response = await TMDB.get(
+    `https://api.themoviedb.org/3/trending/movie/week?api_key=${KEY}`,
+  );
+
+  dispatch({ type: "FETCH_TRENDING", payload: response.data });
+};

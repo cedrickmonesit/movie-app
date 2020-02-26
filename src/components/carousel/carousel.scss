@@ -1,9 +1,37 @@
+.slick-slide img {
+  width: 250px;
+  border: none;
+  margin: 0px;
+}
+.slides .slick-prev,
+.slides .slick-next {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+}
+
 .slides {
   position: relative;
-  .slick-prev,
-  .slick-next {
-    position: absolute;
-    top: 50%;
-    background-color: black;
-  }
+}
+
+.slides .slick-prev,
+.slides .slick-next {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+}
+
+.slides .slick-prev {
+  left: 5%;
+}
+
+.slides .slick-next {
+  right: 5%;
+}
+.slider-container {
+  margin: 10px;
+  text-align: center;
+}
+.slide-image {
+  margin: 0 auto !important; //this must be set to important there is no other way to override react-slick scss package without this
 }
