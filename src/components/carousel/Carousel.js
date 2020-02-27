@@ -2,18 +2,13 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.scss";
 import "slick-carousel/slick/slick-theme.scss";
-import { connect } from "react-redux";
 
 import "./carousel.scss";
-import { fetchTrending } from "../../actions";
 
 class Carousel extends React.Component {
-  componentDidMount() {
-    this.props.fetchTrending();
-  }
   mapTrending() {
-    if (this.props.trending) {
-      return this.props.trending.map(movie => {
+    if (this.props.movies) {
+      return this.props.movies.map(movie => {
         return (
           <div key={movie.id}>
             <div>
@@ -30,13 +25,43 @@ class Carousel extends React.Component {
     }
   }
   render() {
-    console.log(this.props);
-    const settings = {
-      dots: true,
+    var settings = {
+      dots: false,
       infinite: true,
       speed: 500,
-      slidesToShow: 5,
-      slidesToScroll: 5,
+      slidesToShow: 6,
+      slidesToScroll: 6,
+      initialSlide: 0,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 4,
+          },
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+          },
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+          },
+        },
+        {
+          breakpoint: 320,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          },
+        },
+      ],
     };
 
     return (
@@ -47,8 +72,4 @@ class Carousel extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { trending: state.trendingData.results };
-};
-
-export default connect(mapStateToProps, { fetchTrending })(Carousel);
+export default Carousel;
