@@ -7,7 +7,7 @@ import upcomingReducer from "./upcomingReducer";
 
 //take reducer put it inside to combineReducers
 export default combineReducers({
-  //this will be named in the state
+  //this will be named in the store
   movieData: movieReducers,
   searchTerm: searchTermReducer,
   trendingData: trendingReducer,

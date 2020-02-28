@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 const MovieCard = props => {
   const renderCard = () => {
     if (props.movies) {
+      //loop through movies foreach movie return jsx
       return props.movies.map(movie => {
         if (movie.poster_path) {
           return (

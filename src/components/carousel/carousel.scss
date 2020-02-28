@@ -1,21 +1,16 @@
-.slides {
-  position: relative;
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
 }
 
-.slides .slick-prev,
-.slides .slick-next {
-  position: absolute;
-  top: 50%;
-  z-index: 1;
+.slick-prev,
+.slick-next {
+  background: black;
+  height: 100px;
 }
 
-.slides .slick-prev {
-  left: 5%;
-}
-
-.slides .slick-next {
-  right: 5%;
-}
 .slider-container {
   margin: 0rem 2rem;
   margin-bottom: 6rem;
@@ -23,8 +18,14 @@
   text-align: center;
 }
 
-//this must be set to important there is no other way to override react-slick scss package without this
 .slide-image {
-  margin: 0 auto !important;
-  width: 10rem !important;
+  margin: 0 auto;
+  width: 10rem;
+}
+
+//iPhone x portrait
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
+  .slide-image {
+    width: 6rem;
+  }
 }

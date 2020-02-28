@@ -6,8 +6,9 @@ import "slick-carousel/slick/slick-theme.scss";
 import "./carousel.scss";
 
 class Carousel extends React.Component {
-  mapTrending() {
+  mapMovies() {
     if (this.props.movies) {
+      //loops through movies foreach movie returns jsx
       return this.props.movies.map(movie => {
         return (
           <div key={movie.id}>
@@ -25,7 +26,8 @@ class Carousel extends React.Component {
     }
   }
   render() {
-    var settings = {
+    //responsive carousel using breakpoints
+    const settings = {
       dots: false,
       infinite: true,
       speed: 500,
@@ -50,8 +52,8 @@ class Carousel extends React.Component {
         {
           breakpoint: 480,
           settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
+            slidesToShow: 3,
+            slidesToScroll: 3,
           },
         },
         {
@@ -66,7 +68,7 @@ class Carousel extends React.Component {
 
     return (
       <div className="slider-container">
-        <Slider {...settings}>{this.mapTrending()}</Slider>
+        <Slider {...settings}>{this.mapMovies()}</Slider>
       </div>
     );
   }

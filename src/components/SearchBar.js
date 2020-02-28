@@ -7,16 +7,17 @@ class SearchBar extends React.Component {
   };
 
   onFormSubmit = event => {
-    event.preventDefault(); //Prevents page from refresh on submit of form
+    event.preventDefault(); //Prevents page from refresh on submit of the form
 
-    //reference MovieList Component for the props
-    //fetchMovies function from props
-    //searchTerm value from props
+    //reference MovieList Component for the props being used
+    //fetchMovies function is from props
+    //searchTerm value is from props
     this.props.fetchMovies(this.props.searchTerm);
     console.log(this.props);
   };
 
   render() {
+    //onInputChange is from props
     return (
       <div>
         <form onSubmit={this.onFormSubmit}>
