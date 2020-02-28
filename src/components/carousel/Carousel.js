@@ -1,80 +1,75 @@
-import React, { Component } from "react";
+import React from "react";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.scss";
+import "slick-carousel/slick/slick-theme.scss";
 
 import "./carousel.scss";
 
-export default class Responsive extends Component {
+class Carousel extends React.Component {
+  mapTrending() {
+    if (this.props.movies) {
+      return this.props.movies.map(movie => {
+        return (
+          <div key={movie.id}>
+            <div>
+              <img
+                className="slide-image"
+                src={`http://image.tmdb.org/t/p/w185/${movie.poster_path}`}
+                alt={movie.title}
+              />
+              <p>{movie.title}</p>
+            </div>
+          </div>
+        );
+      });
+    }
+  }
   render() {
     var settings = {
-      dots: true,
-      arrows: true,
-      infinite: false,
+      dots: false,
+      infinite: true,
       speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 4,
+      slidesToShow: 6,
+      slidesToScroll: 6,
       initialSlide: 0,
-      className: "slides",
       responsive: [
         {
           breakpoint: 1024,
           settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            infinite: true,
-            dots: true,
-            arrows: true,
+            slidesToShow: 4,
+            slidesToScroll: 4,
           },
         },
         {
           breakpoint: 600,
           settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
-            initialSlide: 2,
+            slidesToShow: 3,
+            slidesToScroll: 3,
           },
         },
         {
           breakpoint: 480,
           settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+          },
+        },
+        {
+          breakpoint: 320,
+          settings: {
             slidesToShow: 1,
             slidesToScroll: 1,
-            arrows: false,
           },
         },
       ],
     };
+
     return (
-      <div>
-        <h2> Responsive </h2>
-        <Slider {...settings}>
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
-          <div>
-            <h3>7</h3>
-          </div>
-          <div>
-            <h3>8</h3>
-          </div>
-        </Slider>
+      <div className="slider-container">
+        <Slider {...settings}>{this.mapTrending()}</Slider>
       </div>
     );
   }
 }
+
+export default Carousel;

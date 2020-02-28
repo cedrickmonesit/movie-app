@@ -1,14 +1,15 @@
 import React from "react";
 
-import MovieList from "./MovieList";
+/*import MovieList from "./MovieList";
 import Carousel from "./carousel/Carousel";
+import Trending from "./Trending";*/
+import Home from "./Home";
 
 const App = () => {
   return (
-    <div>
-      <MovieList />
-      <Carousel />
-    </div>
+    <React.Fragment>
+      <Home />
+    </React.Fragment>
   );
 };
 
