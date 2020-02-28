@@ -9,8 +9,9 @@ import App from "./components/App";
 import reducers from "./reducers";
 
 //redux store
-const store = createStore(reducers, applyMiddleware(thunk)); //Wire thunk to Redux
+const store = createStore(reducers, applyMiddleware(thunk)); //Wire thunk to Redux Store
 
+//Wire up Provider to App to gain access to redux store with connect function
 ReactDOM.render(
   <Provider store={store}>
     <App />

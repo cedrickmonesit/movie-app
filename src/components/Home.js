@@ -7,6 +7,8 @@ import Carousel from "./carousel/Carousel";
 import { fetchTrending, fetchUpcoming } from "../actions";
 
 class Home extends React.Component {
+  //lifecycle method
+  //when Home component mounts it will invoke these actions that fetch data from TMDB API
   componentDidMount() {
     this.props.fetchTrending();
     this.props.fetchUpcoming();
@@ -28,6 +30,7 @@ class Home extends React.Component {
   }
 }
 
+//filter the data from the redux store to the Home component's props for passing onto the Carousel component
 const mapStateToProps = state => {
   return {
     trending: state.trendingData.results,
