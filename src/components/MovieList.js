@@ -20,11 +20,14 @@ class MovieList extends React.Component {
   }
 }
 
+//filter data from redux store to use in the component as a prop
 const mapStateToProps = state => {
+  console.log(state, "state");
   return { movies: state.movieData.results, searchTerm: state.searchTerm };
   //this is setting what you want to call the data from the api just to use the data
 };
 
+//connect function from react-redux to access redux store and dispatch actions
 export default connect(mapStateToProps, { fetchMovies, onInputChange })(
   MovieList,
 );

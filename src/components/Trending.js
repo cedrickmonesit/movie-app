@@ -32,6 +32,7 @@ class Carousel extends React.Component {
   }
 }
 
+//filter data from redux store to use in the component as a prop
 const mapStateToProps = state => {
   return {
     trending: state.trendingData.results,

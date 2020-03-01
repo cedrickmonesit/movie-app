@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 
-//items prop for list of items
 const MovieCard = props => {
   const renderCard = () => {
+    //if movies from api hasn't been loaded will render nothing, prevents error
     if (props.movies) {
       //loop through movies foreach movie return jsx
       return props.movies.map(movie => {
@@ -26,8 +26,10 @@ const MovieCard = props => {
   return renderCard();
 };
 
+//filter data from redux store to use in the component as a prop
 const mapStateToProps = state => {
   return { movies: state.movieData.results };
 };
 
+//connect function from react-redux to access redux store and dispatch actions
 export default connect(mapStateToProps)(MovieCard);
