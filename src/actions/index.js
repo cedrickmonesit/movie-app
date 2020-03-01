@@ -1,4 +1,4 @@
-import TMDB, { KEY } from "../apis/TMDB"; //Import API & API Key
+import TMDB, { KEY } from "../apis/TMDB"; //Import baseURL & API Key
 
 //action creator
 //Applying redux-thunk to action creator that is async await to request API
@@ -8,16 +8,6 @@ export const fetchMovies = searchTerm => async dispatch => {
   );
 
   dispatch({ type: "FETCH_MOVIES", payload: response.data });
-};
-
-//action creator
-//when form is submitted in the SearchBar component this will have an action with a payload of the submitted input
-export const onSearchSubmit = searchTerm => {
-  //connect function in component will handle dispatch of this action
-  return {
-    type: "ON_SUBMIT_SEARCH_TERM",
-    payload: searchTerm,
-  };
 };
 
 //action creator

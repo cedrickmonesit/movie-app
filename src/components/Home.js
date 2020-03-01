@@ -30,7 +30,7 @@ class Home extends React.Component {
   }
 }
 
-//filter the data from the redux store to the Home component's props for passing onto the Carousel component
+//filter the data from the redux store to the Home component's props for passing onto the Carousel component as a prop
 const mapStateToProps = state => {
   return {
     trending: state.trendingData.results,
@@ -38,4 +38,5 @@ const mapStateToProps = state => {
   };
 };
 
+//connect function from react-redux to access redux store and dispatch actions
 export default connect(mapStateToProps, { fetchTrending, fetchUpcoming })(Home);
