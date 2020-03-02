@@ -36,11 +36,15 @@ class MovieCarousel extends React.Component {
       animationSpeed: 500,
       arrows: true,
       breakpoints: {
-        600: {
-          slidesPerPage: 3,
-          slidesPerScroll: 3,
+        1000: {
+          slidesPerPage: 5,
+          slidesPerScroll: 5,
         },
-        375: {
+        800: {
+          slidesPerPage: 4,
+          slidesPerScroll: 4,
+        },
+        650: {
           slidesPerPage: 3,
           slidesPerScroll: 3,
         },

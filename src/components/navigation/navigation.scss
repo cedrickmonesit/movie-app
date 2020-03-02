@@ -1,0 +1,38 @@
+.hamburger {
+  position: fixed;
+  right: 0;
+  top: 0.5rem;
+  z-index: 11;
+}
+
+.hamburger-inner,
+.hamburger-inner:before,
+.hamburger-inner:after,
+.hamburger.is-active .hamburger-inner,
+.hamburger.is-active .hamburger-inner::before,
+.hamburger.is-active .hamburger-inner::after {
+  background-color: black;
+}
+
+.main-nav-top {
+  display: grid;
+  position: fixed;
+  top: 0;
+  background: gray;
+  width: 100vw;
+  height: 18vw;
+  z-index: 10;
+}
+
+.main-nav-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 18vw;
+  z-index: 10;
+  background: gray;
+}
+
+.hide {
+  display: none;
+}
