@@ -1,4 +1,5 @@
 import TMDB, { KEY } from "../apis/TMDB"; //Import baseURL & API Key
+import history from "../history";
 
 //action creator
 //Applying redux-thunk to action creator that is async await to request API
@@ -8,6 +9,7 @@ export const fetchMovies = searchTerm => async dispatch => {
   );
 
   dispatch({ type: "FETCH_MOVIES", payload: response.data });
+  history.push("/movielist");
 };
 
 //action creator
@@ -52,4 +54,24 @@ export const fetchMovieDetails = id => async dispatch => {
 
   //dispatches action to matching type reducer
   dispatch({ type: "FETCH_MOVIE_DETAILS", payload: response.data });
+};
+
+//action creator
+export const fetchTopRated = () => async dispatch => {
+  const response = await TMDB.get(
+    `https://api.themoviedb.org/3/movie/top_rated?api_key=${KEY}&language=en-US&page=1`,
+  );
+
+  //dispatches action to matching type reducer
+  dispatch({ type: "FETCH_TOP_RATED", payload: response.data });
+};
+
+//action creator
+export const fetchNowPlaying = () => async dispatch => {
+  const response = await TMDB.get(
+    `https://api.themoviedb.org/3/movie/now_playing?api_key=${KEY}&language=en-US&page=1`,
+  );
+
+  //dispatches action to matching type reducer
+  dispatch({ type: "FETCH_NOW_PLAYING", payload: response.data });
 };

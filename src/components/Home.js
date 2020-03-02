@@ -3,8 +3,14 @@ import "slick-carousel/slick/slick.scss";
 import "slick-carousel/slick/slick-theme.scss";
 import { connect } from "react-redux";
 import Carousel from "./carousel/Carousel";
+import ImageCarousel from "./carousel/ImageCarousel";
 
-import { fetchTrending, fetchUpcoming } from "../actions";
+import {
+  fetchTrending,
+  fetchUpcoming,
+  fetchTopRated,
+  fetchNowPlaying,
+} from "../actions";
 
 class Home extends React.Component {
   //lifecycle method
@@ -12,20 +18,30 @@ class Home extends React.Component {
   componentDidMount() {
     this.props.fetchTrending();
     this.props.fetchUpcoming();
+    this.props.fetchTopRated();
+    this.props.fetchNowPlaying();
   }
   render() {
     console.log(this.props, "trending component");
     return (
-      <React.Fragment>
+      <div className="home-container">
+        <ImageCarousel movies={this.props.nowPlaying} />
+
         <div>
           <h1>Upcoming</h1>
+          <Carousel movies={this.props.upcoming} />
         </div>
-        <Carousel movies={this.props.upcoming} />
+
         <div>
           <h1>Trending</h1>
+          <Carousel movies={this.props.trending} />
         </div>
-        <Carousel movies={this.props.trending} />
-      </React.Fragment>
+
+        <div>
+          <h1>Top Rated</h1>
+          <Carousel movies={this.props.topRated} />
+        </div>
+      </div>
     );
   }
 }
@@ -35,8 +51,15 @@ const mapStateToProps = state => {
   return {
     trending: state.trendingData.results,
     upcoming: state.upcomingData.results,
+    topRated: state.topRatedData.results,
+    nowPlaying: state.nowPlayingData.results,
   };
 };
 
 //connect function from react-redux to access redux store and dispatch actions
-export default connect(mapStateToProps, { fetchTrending, fetchUpcoming })(Home);
+export default connect(mapStateToProps, {
+  fetchTrending,
+  fetchUpcoming,
+  fetchTopRated,
+  fetchNowPlaying,
+})(Home);

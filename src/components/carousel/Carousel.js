@@ -2,6 +2,7 @@ import React from "react";
 import Carousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
 import { Link } from "react-router-dom";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import "./carousel.scss";
 
@@ -36,21 +37,35 @@ class MovieCarousel extends React.Component {
       animationSpeed: 500,
       arrows: true,
       breakpoints: {
-        1000: {
+        1150: {
           slidesPerPage: 5,
           slidesPerScroll: 5,
         },
-        800: {
+        980: {
           slidesPerPage: 4,
           slidesPerScroll: 4,
         },
-        650: {
+        850: {
           slidesPerPage: 3,
           slidesPerScroll: 3,
         },
+        350: {
+          slidesPerPage: 2,
+          slidesPerScroll: 2,
+        },
       },
     };
-    return <Carousel {...settings}>{this.mapMovies()}</Carousel>;
+
+    return (
+      <Carousel
+        {...settings}
+        arrowLeft={<FaChevronLeft className="carousel-arrow-left" />}
+        arrowRight={<FaChevronRight className="carousel-arrow-right" />}
+        addArrowClickHandler
+      >
+        {this.mapMovies()}
+      </Carousel>
+    );
   }
 }
 

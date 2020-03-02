@@ -1,3 +1,14 @@
+.icon {
+  font-size: 3rem;
+  color: white;
+  text-decoration: none;
+  margin: 0 1rem;
+  margin-top: 0.5rem;
+}
+.icon-home {
+  font-size: 3.4rem;
+}
+
 .hamburger {
   position: fixed;
   right: 0;
@@ -16,23 +27,68 @@
 
 .main-nav-top {
   display: grid;
+  grid-template-areas: "logo searchbar";
+
   position: fixed;
   top: 0;
-  background: gray;
+  background: #89cff0;
   width: 100vw;
   height: 18vw;
   z-index: 10;
 }
+.main-nav-logo {
+  align-self: center;
+  display: inline-block;
+}
+.main-nav-searchbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5rem;
+}
 
 .main-nav-bottom {
+  display: flex;
+  justify-content: space-between;
   position: fixed;
   bottom: 0;
   width: 100vw;
   height: 18vw;
   z-index: 10;
-  background: gray;
+  background: #89cff0;
+}
+.main-nav-top-icons {
+  display: none;
 }
 
 .hide {
   display: none;
+}
+
+@media (min-width: 600px) {
+  .hamburger {
+    display: none;
+  }
+  .main-nav-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 11vh;
+  }
+  .main-nav-top-icons {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+  }
+  .icon {
+    font-size: 2rem;
+    margin: 0 1rem;
+  }
+  .icon-home {
+    font-size: 2.4rem;
+  }
+  .main-nav-bottom {
+    display: none;
+  }
 }
