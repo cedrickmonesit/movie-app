@@ -1,0 +1,42 @@
+.img-slide {
+  margin-top: 1rem;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+}
+
+.img-slide-image {
+  position: relative;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  width: 100%;
+  height: 40vh;
+}
+
+.img-slide-image a {
+  text-decoration: none;
+}
+
+.img-slide-image div {
+  text-align: left;
+  position: absolute;
+  bottom: 3rem;
+  left: 3rem;
+  color: white;
+}
+
+.BrainhubCarousel {
+  position: relative;
+  top: -1rem;
+}
+
+@media (min-width: 600px) {
+  .img-slide-image {
+    height: 94vh;
+  }
+  .BrainhubCarousel {
+    margin-top: 3.9rem;
+  }
+}

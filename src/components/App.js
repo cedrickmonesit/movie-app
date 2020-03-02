@@ -11,11 +11,13 @@ const App = () => {
   return (
     <Router history={history}>
       <Navigation />
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/moviedetails/:id" exact component={MovieDetails} />
-        <Route path="/movielist" exact component={MovieList} />
-      </Switch>
+      <div className="main">
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/moviedetails/:id" exact component={MovieDetails} />
+          <Route path="/movielist" exact component={MovieList} />
+        </Switch>
+      </div>
     </Router>
   );
 };

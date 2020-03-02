@@ -5,6 +5,8 @@ import searchTermReducer from "./searchTermReducer";
 import trendingReducer from "./trendingReducer";
 import upcomingReducer from "./upcomingReducer";
 import movieDetailsReducer from "./movieDetailsReducer";
+import topRatedReducer from "./topRatedReducer";
+import nowPlayingReducer from "./nowPlayingReducer";
 
 //take reducer put it inside to combineReducers
 export default combineReducers({
@@ -14,4 +16,6 @@ export default combineReducers({
   trendingData: trendingReducer,
   upcomingData: upcomingReducer,
   movieDetails: movieDetailsReducer,
+  topRatedData: topRatedReducer,
+  nowPlayingData: nowPlayingReducer,
 });

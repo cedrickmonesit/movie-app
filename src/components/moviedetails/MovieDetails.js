@@ -22,6 +22,7 @@ class MovieDetails extends React.Component {
           ></header>
 
           <h1>{this.props.movie.title}</h1>
+          <p>{this.props.movie.overview}</p>
         </div>
       );
     }
