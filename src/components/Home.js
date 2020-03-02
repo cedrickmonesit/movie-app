@@ -16,16 +16,16 @@ class Home extends React.Component {
   render() {
     console.log(this.props, "trending component");
     return (
-      <div>
-        <div>
-          <h1>Trending</h1>
-        </div>
-        <Carousel movies={this.props.trending} />
+      <React.Fragment>
         <div>
           <h1>Upcoming</h1>
         </div>
         <Carousel movies={this.props.upcoming} />
-      </div>
+        <div>
+          <h1>Trending</h1>
+        </div>
+        <Carousel movies={this.props.trending} />
+      </React.Fragment>
     );
   }
 }

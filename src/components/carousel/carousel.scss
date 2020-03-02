@@ -5,27 +5,56 @@ body {
   margin: 0;
 }
 
-.slick-prev,
-.slick-next {
-  background: black;
-  height: 100px;
+.slide {
+  margin-top: 1rem;
+  position: relative;
+  text-align: center;
+  width: 20rem;
+  height: 20rem;
+  transition: all 0.2s ease-in-out;
 }
 
-.slider-container {
-  margin: 0rem 2rem;
-  margin-bottom: 6rem;
-  margin-top: 1rem;
-  text-align: center;
+.slide:hover {
+  transform: scale(1.1);
+}
+
+.slide a {
+  text-decoration: none;
+  width: auto;
 }
 
 .slide-image {
+  position: relative;
+  right: 0;
+  left: 0;
   margin: 0 auto;
-  width: 10rem;
+  width: 8rem;
+  height: 12rem;
+}
+
+.slide-title {
+  position: relative;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  color: black;
+  font-size: 1rem;
+}
+
+.BrainhubCarousel__arrowLeft {
+  position: relative;
+  top: -3rem;
+}
+
+.BrainhubCarousel__arrowRight {
+  position: relative;
+  top: -3rem;
 }
 
 //iPhone x portrait
 @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
   .slide-image {
     width: 6rem;
+    height: auto;
   }
 }
