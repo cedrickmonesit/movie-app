@@ -1,77 +1,53 @@
 import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.scss";
-import "slick-carousel/slick/slick-theme.scss";
+import Carousel from "@brainhubeu/react-carousel";
+import "@brainhubeu/react-carousel/lib/style.css";
+import { Link } from "react-router-dom";
 
 import "./carousel.scss";
 
-class Carousel extends React.Component {
+class MovieCarousel extends React.Component {
   mapMovies() {
     if (this.props.movies) {
       //loops through movies foreach movie returns jsx
       return this.props.movies.map(movie => {
         return (
-          <div key={movie.id}>
-            <div>
+          <div key={movie.id} className="slide">
+            <Link to={`/moviedetails/${movie.id}`}>
               <img
                 className="slide-image"
                 src={`http://image.tmdb.org/t/p/w185/${movie.poster_path}`}
                 alt={movie.title}
               />
-              <p>{movie.title}</p>
-            </div>
+              <div className="slide-title">
+                <p>{movie.title}</p>
+              </div>
+            </Link>
           </div>
         );
       });
     }
   }
-  render() {
-    //responsive carousel using breakpoints
-    const settings = {
-      dots: false,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 6,
-      slidesToScroll: 6,
-      initialSlide: 0,
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 4,
-            slidesToScroll: 4,
-          },
-        },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
-          },
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
-          },
-        },
-        {
-          breakpoint: 320,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-          },
-        },
-      ],
-    };
 
-    return (
-      <div className="slider-container">
-        <Slider {...settings}>{this.mapMovies()}</Slider>
-      </div>
-    );
+  render() {
+    const settings = {
+      slidesPerPage: 6,
+      slidesPerScroll: 6,
+      infinite: true,
+      animationSpeed: 500,
+      arrows: true,
+      breakpoints: {
+        600: {
+          slidesPerPage: 3,
+          slidesPerScroll: 3,
+        },
+        375: {
+          slidesPerPage: 3,
+          slidesPerScroll: 3,
+        },
+      },
+    };
+    return <Carousel {...settings}>{this.mapMovies()}</Carousel>;
   }
 }
 
-export default Carousel;
+export default MovieCarousel;

@@ -43,3 +43,13 @@ export const fetchUpcoming = () => async dispatch => {
   //dispatches action to matching type reducer
   dispatch({ type: "FETCH_UPCOMING", payload: response.data });
 };
+
+//action creator
+export const fetchMovieDetails = id => async dispatch => {
+  const response = await TMDB.get(
+    `https://api.themoviedb.org/3/movie/${id}?api_key=${KEY}`,
+  );
+
+  //dispatches action to matching type reducer
+  dispatch({ type: "FETCH_MOVIE_DETAILS", payload: response.data });
+};
