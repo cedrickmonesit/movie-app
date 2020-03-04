@@ -4,7 +4,7 @@ import { Router, Route, Switch } from "react-router-dom";
 import Navigation from "./navigation/Navigation";
 import MovieList from "./MovieList";
 import MovieDetails from "./moviedetails/MovieDetails";
-import Home from "./Home";
+import Home from "./home/Home";
 import history from "../history";
 
 const App = () => {
