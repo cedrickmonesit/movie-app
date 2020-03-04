@@ -1,18 +1,18 @@
 .icon {
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: white;
   text-decoration: none;
   margin: 0 1rem;
   margin-top: 0.5rem;
 }
 .icon-home {
-  font-size: 3.4rem;
+  font-size: 2.9rem;
 }
 
 .hamburger {
   position: fixed;
   right: 0;
-  top: 0.5rem;
+  margin-top: 0.5%;
   z-index: 11;
 }
 
@@ -22,40 +22,42 @@
 .hamburger.is-active .hamburger-inner,
 .hamburger.is-active .hamburger-inner::before,
 .hamburger.is-active .hamburger-inner::after {
-  background-color: black;
+  background-color: white;
 }
 
 .main-nav-top {
-  display: grid;
-  grid-template-areas: "logo searchbar";
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: fixed;
   top: 0;
-  background: #89cff0;
-  width: 100vw;
-  height: 18vw;
   z-index: 10;
 }
+
+.main-nav-top-searchbar {
+  margin-right: 18%;
+  width: 60%;
+}
+
 .main-nav-logo {
   align-self: center;
-  display: inline-block;
 }
-.main-nav-searchbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 5rem;
+
+.main-nav-top,
+.main-nav-bottom {
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), #fe346e;
+  height: 8%;
+  width: 100vw;
 }
 
 .main-nav-bottom {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   position: fixed;
   bottom: 0;
-  width: 100vw;
-  height: 18vw;
+
   z-index: 10;
-  background: #89cff0;
 }
 .main-nav-top-icons {
   display: none;
@@ -65,7 +67,7 @@
   display: none;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 700px) {
   .hamburger {
     display: none;
   }
@@ -73,8 +75,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100vw;
-    height: 11vh;
   }
   .main-nav-top-icons {
     display: flex;
@@ -90,5 +90,9 @@
   }
   .main-nav-bottom {
     display: none;
+  }
+  .main-nav-top-searchbar {
+    margin-right: 0;
+    width: 40%;
   }
 }

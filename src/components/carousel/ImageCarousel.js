@@ -19,10 +19,10 @@ class MovieCarousel extends React.Component {
                   background: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(http://image.tmdb.org/t/p/original/${movie.backdrop_path}) center/cover no-repeat border-box, rgb(255, 255, 255)`,
                 }}
               >
-                <div>
-                  <p className="swiper-slide__category">Now Playing</p>
-                  <h2 className="swiper-slide__title"> {movie.title}</h2>
-                  <p className="swiper-slide__genre">Genre</p>
+                <div className="img-slide-details">
+                  <p className="img-slide__category">Now Playing</p>
+                  <h2 className="img-slide__title"> {movie.title}</h2>
+                  <p className="img-slide__genre">Genre</p>
                 </div>
               </div>
             </Link>

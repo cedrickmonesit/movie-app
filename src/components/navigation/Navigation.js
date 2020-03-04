@@ -28,12 +28,17 @@ const Navigation = props => {
         </span>
       </button>
       <div className="main-nav-top hide">
-        <a className="main-nav-logo">logo</a>
-        <SearchBar
-          searchTerm={props.searchTerm}
-          fetchMovies={props.fetchMovies}
-          onInputChange={props.onInputChange}
-        />
+        <a href="/">
+          <div className="main-nav-logo">Logo</div>
+        </a>
+        <div className="main-nav-top-searchbar">
+          <SearchBar
+            searchTerm={props.searchTerm}
+            fetchMovies={props.fetchMovies}
+            onInputChange={props.onInputChange}
+          />
+        </div>
+
         <div className="main-nav-top-icons">
           <Link to="/">
             <AiFillHome className="icon icon-home" />

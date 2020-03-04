@@ -1,8 +1,5 @@
-* {
-  box-sizing: border-box;
-}
-body {
-  margin: 0;
+.BrainhubCarousel {
+  position: relative;
 }
 
 .slide {
@@ -10,17 +7,23 @@ body {
   position: relative;
   text-align: center;
   width: 20rem;
-  height: 20rem;
+
+  opacity: 0.6;
   transition: all 0.2s ease-in-out;
 }
 
 .slide:hover {
   transform: scale(1.1);
+  opacity: 1;
 }
 
 .slide a {
   text-decoration: none;
   width: auto;
+  p {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+  }
 }
 
 .slide-image {
@@ -38,67 +41,41 @@ body {
   right: 0;
   left: 0;
   bottom: 0;
-  color: black;
-  font-size: 1rem;
-}
-
-.BrainhubCarousel {
-  height: 19rem;
+  color: white;
+  font-size: 1.4rem;
 }
 
 .carousel-arrow-left,
 .carousel-arrow-right {
+  cursor: pointer;
   position: absolute;
   background: transparent;
   height: 9rem;
   width: 1.5rem;
-  color: black;
+  color: white;
   z-index: 9;
+  opacity: 0.6;
   transition: all 0.2s ease-in-out;
+  top: 2.2rem;
 }
 .carousel-arrow-left:hover,
 .carousel-arrow-right:hover {
   transform: scale(1.1);
-}
-
-.carousel-arrow-left {
-  top: 0;
+  opacity: 1;
 }
 
 .carousel-arrow-right {
-  top: 0;
   right: 0;
 }
-/*
-.BrainhubCarousel__arrowLeft,
-.BrainhubCarousel__arrowRight {
-  position: relative;
-  top: -3rem;
-  z-index: 5;
-}
-.BrainhubCarousel__arrowLeft,
-.BrainhubCarousel__arrowRight {
-  background: black;
-  height: 9rem;
-  top: -5rem;
-}
-.BrainhubCarousel__arrowLeft span,
-.BrainhubCarousel__arrowRight span {
-  color: black;
-}
 
-.BrainhubCarousel__arrowLeft {
-  right: 0rem;
-}
-
-.BrainhubCarousel__arrowRight {
-  left: 0rem;
-}
-*/
-@media (min-width: 650px) {
-  .BrainhubCarousel {
-    height: 10%;
+@media (min-width: 550px) {
+  .slide a {
+    p {
+      font-size: 1.8rem;
+      margin: 0.5rem 0;
+    }
   }
+
   .slide-image {
     width: 10rem;
     height: auto;
@@ -108,15 +85,6 @@ body {
     height: 15rem;
     width: 2rem;
     font-size: 1.5rem;
-    top: 1rem;
+    top: 2rem;
   }
-
-  /*
-  .BrainhubCarousel__arrowLeft,
-  .BrainhubCarousel__arrowRight {
-    background: black;
-    height: 15rem;
-    top: -2rem;
-  }
-  */
 }

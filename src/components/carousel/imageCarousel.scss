@@ -19,24 +19,44 @@
   text-decoration: none;
 }
 
-.img-slide-image div {
+.img-slide-details {
   text-align: left;
   position: absolute;
   bottom: 3rem;
-  left: 3rem;
+  left: 1rem;
   color: white;
-}
 
-.BrainhubCarousel {
-  position: relative;
-  top: -1rem;
-}
-
-@media (min-width: 600px) {
-  .img-slide-image {
-    height: 94vh;
+  .img-slide__category {
+    font-size: 1rem;
+    margin: 0;
   }
-  .BrainhubCarousel {
-    margin-top: 3.9rem;
+  .img-slide__title {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+  .img-slide__genre {
+    font-size: 1rem;
+    margin: 0;
+  }
+}
+
+@media (min-width: 700px) {
+  .img-slide-details {
+    .img-slide__category {
+      font-size: 1.6rem;
+      margin: 0;
+    }
+    .img-slide__title {
+      font-size: 3rem;
+      margin: 1rem 0;
+    }
+    .img-slide__genre {
+      font-size: 2rem;
+      margin: 0;
+    }
+  }
+
+  .img-slide-image {
+    height: 100vh;
   }
 }
