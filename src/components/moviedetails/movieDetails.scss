@@ -1,3 +1,13 @@
 .movie-details-header {
-  height: 94vh;
+  height: 40vh;
+}
+
+.movie-details-main {
+  color: white;
+}
+
+@media (min-width: 600px) {
+  .movie-details-header {
+    height: 100vh;
+  }
 }

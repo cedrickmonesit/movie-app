@@ -57,6 +57,17 @@ export const fetchMovieDetails = id => async dispatch => {
 };
 
 //action creator
+export const fetchCredits = id => async dispatch => {
+  const response = await TMDB.get(
+    `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${KEY}
+    `,
+  );
+
+  //dispatches action to matching type reducer
+  dispatch({ type: "FETCH_CREDITS", payload: response.data });
+};
+
+//action creator
 export const fetchTopRated = () => async dispatch => {
   const response = await TMDB.get(
     `https://api.themoviedb.org/3/movie/top_rated?api_key=${KEY}&language=en-US&page=1`,
@@ -74,4 +85,14 @@ export const fetchNowPlaying = () => async dispatch => {
 
   //dispatches action to matching type reducer
   dispatch({ type: "FETCH_NOW_PLAYING", payload: response.data });
+};
+
+//action creator
+export const fetchPopular = () => async dispatch => {
+  const response = await TMDB.get(
+    `https://api.themoviedb.org/3/movie/popular?api_key=${KEY}&language=en-US&page=1`,
+  );
+
+  //dispatches action to matching type reducer
+  dispatch({ type: "FETCH_POPULAR", payload: response.data });
 };

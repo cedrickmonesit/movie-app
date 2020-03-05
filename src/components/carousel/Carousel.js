@@ -16,7 +16,7 @@ class MovieCarousel extends React.Component {
             <Link to={`/moviedetails/${movie.id}`}>
               <img
                 className="slide-image"
-                src={`http://image.tmdb.org/t/p/w185/${movie.poster_path}`}
+                src={`http://image.tmdb.org/t/p/original/${movie.poster_path}`}
                 alt={movie.title}
               />
               <div className="slide-title">
@@ -52,6 +52,10 @@ class MovieCarousel extends React.Component {
         350: {
           slidesPerPage: 2,
           slidesPerScroll: 2,
+        },
+        200: {
+          slidesPerPage: 1,
+          slidesPerScroll: 1,
         },
       },
     };

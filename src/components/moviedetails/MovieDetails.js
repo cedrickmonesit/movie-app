@@ -1,13 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { fetchMovieDetails } from "../../actions";
+import { fetchMovieDetails, fetchCredits } from "../../actions";
 import "./movieDetails.scss";
+import PeopleCarousel from "./peoplecarousel/PeopleCarousel";
 
 class MovieDetails extends React.Component {
   componentDidMount() {
-    this.props.fetchMovieDetails(this.props.match.params.id);
-    console.log(this.props.match.params.id);
+    const id = this.props.match.params.id;
+    this.props.fetchMovieDetails(id);
+    this.props.fetchCredits(id);
+    console.log(id);
   }
 
   renderDetails = () => {
@@ -19,10 +22,16 @@ class MovieDetails extends React.Component {
             style={{
               background: `linear-gradient(0deg, rgb(0, 0, 0) 5%, rgba(0, 0, 0, 0.45) 92%), url(https://image.tmdb.org/t/p/original/${this.props.movie.backdrop_path}) center/cover no-repeat border-box, rgb(255, 255, 255)`,
             }}
-          ></header>
-
-          <h1>{this.props.movie.title}</h1>
-          <p>{this.props.movie.overview}</p>
+          >
+            <div className="movie-details-header-info-container"></div>
+          </header>
+          <main className="movie-details-main">
+            <div className="movie-details-summary">
+              <h2>Summary</h2>
+              <p>{this.props.movie.overview}</p>
+            </div>
+            <PeopleCarousel credits={this.props.credits} />
+          </main>
         </div>
       );
     }
@@ -35,7 +44,9 @@ class MovieDetails extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { movie: state.movieDetails };
+  return { movie: state.movieDetails, credits: state.creditsData.cast };
 };
 
-export default connect(mapStateToProps, { fetchMovieDetails })(MovieDetails);
+export default connect(mapStateToProps, { fetchMovieDetails, fetchCredits })(
+  MovieDetails,
+);
