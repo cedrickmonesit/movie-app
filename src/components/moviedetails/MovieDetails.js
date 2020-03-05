@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { fetchMovieDetails, fetchCredits } from "../../actions";
+import { fetchMovieDetails, fetchCredits, fetchTrailers } from "../../actions";
 import "./movieDetails.scss";
+import TrailersCarousel from "./trailerscarousel/TrailersCarousel.js";
 import PeopleCarousel from "./peoplecarousel/PeopleCarousel";
 
 class MovieDetails extends React.Component {
@@ -10,6 +11,7 @@ class MovieDetails extends React.Component {
     const id = this.props.match.params.id;
     this.props.fetchMovieDetails(id);
     this.props.fetchCredits(id);
+    this.props.fetchTrailers(id);
     console.log(id);
   }
 
@@ -30,6 +32,7 @@ class MovieDetails extends React.Component {
               <h2>Summary</h2>
               <p>{this.props.movie.overview}</p>
             </div>
+            <TrailersCarousel trailers={this.props.trailers} />
             <PeopleCarousel credits={this.props.credits} />
           </main>
         </div>
@@ -44,9 +47,15 @@ class MovieDetails extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { movie: state.movieDetails, credits: state.creditsData.cast };
+  return {
+    movie: state.movieDetails,
+    credits: state.creditsData.cast,
+    trailers: state.trailersData.results,
+  };
 };
 
-export default connect(mapStateToProps, { fetchMovieDetails, fetchCredits })(
-  MovieDetails,
-);
+export default connect(mapStateToProps, {
+  fetchMovieDetails,
+  fetchCredits,
+  fetchTrailers,
+})(MovieDetails);

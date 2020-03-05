@@ -1,0 +1,23 @@
+.trailer-slide iframe {
+  border: none;
+  width: 300px;
+  height: 200px;
+  opacity: 1;
+  transition: all 0.2s ease-in-out;
+}
+.trailer-slide iframe:hover {
+  opacity: 1;
+}
+
+.trailer-carousel .carousel-arrow-left,
+.trailer-carousel .carousel-arrow-right {
+  height: 100%;
+}
+
+@media (min-width: 550px) {
+  .trailer-slide iframe {
+    opacity: 0.6;
+    width: 400px;
+    height: 250px;
+  }
+}
