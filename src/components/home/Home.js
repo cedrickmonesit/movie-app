@@ -11,6 +11,7 @@ import {
   fetchUpcoming,
   fetchTopRated,
   fetchNowPlaying,
+  fetchPopular,
 } from "../../actions";
 
 class Home extends React.Component {
@@ -21,6 +22,7 @@ class Home extends React.Component {
     this.props.fetchUpcoming();
     this.props.fetchTopRated();
     this.props.fetchNowPlaying();
+    this.props.fetchPopular();
   }
   render() {
     console.log(this.props, "trending component");
@@ -31,20 +33,23 @@ class Home extends React.Component {
         <div className="home-container-carousel">
           <h1 className="home-container-genre">Upcoming</h1>
           <Carousel movies={this.props.upcoming} />
+          <hr className="home-container-coursel__separator" />
         </div>
 
         <div className="home-container-carousel">
           <h1 className="home-container-genre">Trending</h1>
           <Carousel movies={this.props.trending} />
-        </div>
-
-        <div className="home-container-carousel">
-          <h1 className="home-container-genre">Top Rated</h1>
-          <Carousel movies={this.props.topRated} />
+          <hr className="home-container-coursel__separator" />
         </div>
 
         <div className="home-container-carousel">
           <h1 className="home-container-genre">Popular</h1>
+          <Carousel movies={this.props.popular} />
+          <hr className="home-container-coursel__separator" />
+        </div>
+
+        <div className="home-container-carousel">
+          <h1 className="home-container-genre">Top Rated</h1>
           <Carousel movies={this.props.topRated} />
         </div>
       </div>
@@ -59,6 +64,7 @@ const mapStateToProps = state => {
     upcoming: state.upcomingData.results,
     topRated: state.topRatedData.results,
     nowPlaying: state.nowPlayingData.results,
+    popular: state.popularData.results,
   };
 };
 
@@ -68,4 +74,5 @@ export default connect(mapStateToProps, {
   fetchUpcoming,
   fetchTopRated,
   fetchNowPlaying,
+  fetchPopular,
 })(Home);

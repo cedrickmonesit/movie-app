@@ -7,6 +7,8 @@ import upcomingReducer from "./upcomingReducer";
 import movieDetailsReducer from "./movieDetailsReducer";
 import topRatedReducer from "./topRatedReducer";
 import nowPlayingReducer from "./nowPlayingReducer";
+import popularReducer from "./popularReducer";
+import creditsReducer from "./creditsReducer";
 
 //take reducer put it inside to combineReducers
 export default combineReducers({
@@ -18,4 +20,6 @@ export default combineReducers({
   movieDetails: movieDetailsReducer,
   topRatedData: topRatedReducer,
   nowPlayingData: nowPlayingReducer,
+  popularData: popularReducer,
+  creditsData: creditsReducer,
 });

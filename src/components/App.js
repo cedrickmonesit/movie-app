@@ -5,6 +5,7 @@ import Navigation from "./navigation/Navigation";
 import MovieList from "./MovieList";
 import MovieDetails from "./moviedetails/MovieDetails";
 import Home from "./home/Home";
+import Footer from "./footer/Footer";
 import history from "../history";
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/movielist" exact component={MovieList} />
         </Switch>
       </div>
+      <Footer />
     </Router>
   );
 };
