@@ -8,6 +8,7 @@ import { FaUserAlt, FaHeart } from "react-icons/fa";
 import SearchBar from "../searchbar/SearchBar";
 import { onInputChange, fetchMovies } from "../../actions";
 import "./navigation.scss";
+import logo from "../../images/logo.png";
 
 const Navigation = props => {
   const onClickHamburger = () => {
@@ -29,7 +30,9 @@ const Navigation = props => {
       </button>
       <div className="main-nav-top hide">
         <a href="/">
-          <div className="main-nav-logo">Logo</div>
+          <div className="main-nav-logo-container">
+            <img className="main-nav-logo" src={logo} alt="FilmFlix Logo" />
+          </div>
         </a>
         <div className="main-nav-top-searchbar">
           <SearchBar

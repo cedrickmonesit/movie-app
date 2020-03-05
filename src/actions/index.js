@@ -96,3 +96,14 @@ export const fetchPopular = () => async dispatch => {
   //dispatches action to matching type reducer
   dispatch({ type: "FETCH_POPULAR", payload: response.data });
 };
+
+//action creator
+export const fetchTrailers = id => async dispatch => {
+  const response = await TMDB.get(
+    `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${KEY}&language=en-US
+    `,
+  );
+
+  //dispatches action to matching type reducer
+  dispatch({ type: "FETCH_TRAILERS", payload: response.data });
+};
