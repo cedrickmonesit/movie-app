@@ -19,10 +19,6 @@
 .slide a {
   text-decoration: none;
   width: auto;
-  p {
-    font-size: 1.1rem;
-    margin: 0.5rem 0;
-  }
 }
 
 .slide-image {
@@ -42,7 +38,8 @@
   left: 0;
   bottom: 0;
   color: white;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
 }
 
 .carousel-arrow-left,
@@ -62,6 +59,34 @@
 .carousel-arrow-right {
   right: 0;
 }
+.carousel-image-container {
+  position: relative;
+  right: 0;
+  left: 0;
+  width: 6rem;
+  height: 9rem;
+  margin: 0 auto;
+}
+
+.slide-movie-rating {
+  font-family: "Noto Sans TC", sans-serif;
+  position: absolute;
+  top: 0.5rem;
+  left: 0rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  font-size: 0.8rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0.2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.4rem;
+}
+
+.slide-movie-rating p {
+  margin: 0;
+  margin-left: 0.4rem;
+}
 
 @media (min-width: 550px) {
   .carousel-arrow-left:hover,
@@ -69,28 +94,43 @@
     transform: scale(1.1);
     opacity: 1;
   }
+
   .carousel-arrow-left,
   .carousel-arrow-right {
     opacity: 0.6;
   }
+
   .slide {
     opacity: 0.6;
   }
-  .slide a {
-    p {
-      font-size: 1.5rem;
-      margin: 0.5rem 0;
-    }
+
+  .slide-title {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
   }
 
   .slide-image {
     width: 10rem;
     height: 15rem;
   }
+
   .carousel-arrow-left,
   .carousel-arrow-right {
     width: 2rem;
     font-size: 1.5rem;
     height: 85%;
+  }
+
+  .carousel-image-container {
+    width: 10rem;
+    height: 15rem;
+  }
+
+  .slide-movie-rating {
+    top: 1rem;
+  }
+
+  .slide-movie-rating p {
+    font-size: 1rem;
   }
 }
