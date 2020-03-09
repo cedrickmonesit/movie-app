@@ -10,6 +10,7 @@ import nowPlayingReducer from "./nowPlayingReducer";
 import popularReducer from "./popularReducer";
 import creditsReducer from "./creditsReducer";
 import trailersReducer from "./trailersReducer";
+import similarMoviesReducer from "./similarMoviesReducer";
 
 //take reducer put it inside to combineReducers
 export default combineReducers({
@@ -24,4 +25,5 @@ export default combineReducers({
   popularData: popularReducer,
   creditsData: creditsReducer,
   trailersData: trailersReducer,
+  similarMoviesData: similarMoviesReducer,
 });

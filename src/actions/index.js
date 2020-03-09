@@ -9,7 +9,7 @@ export const fetchMovies = searchTerm => async dispatch => {
   );
 
   dispatch({ type: "FETCH_MOVIES", payload: response.data });
-  history.push("/movielist");
+  history.push("/list/movies");
 };
 
 //action creator
@@ -26,9 +26,7 @@ export const onInputChange = searchTerm => {
 //Creates an action with a payload of the trending movie data from the API request
 //does not dispatch action until API data has been loaded
 export const fetchTrending = () => async dispatch => {
-  const response = await TMDB.get(
-    `https://api.themoviedb.org/3/trending/movie/week?api_key=${KEY}`,
-  );
+  const response = await TMDB.get(`/trending/movie/week?api_key=${KEY}`);
 
   //dispatches action to matching type reducer
   dispatch({ type: "FETCH_TRENDING", payload: response.data });
@@ -38,9 +36,7 @@ export const fetchTrending = () => async dispatch => {
 //Creates an action with a payload of upcoming movie data from the API request
 //does not dispatch action until API data has been loaded
 export const fetchUpcoming = () => async dispatch => {
-  const response = await TMDB.get(
-    `https://api.themoviedb.org/3/movie/upcoming?api_key=${KEY}`,
-  );
+  const response = await TMDB.get(`/movie/upcoming?api_key=${KEY}`);
 
   //dispatches action to matching type reducer
   dispatch({ type: "FETCH_UPCOMING", payload: response.data });
@@ -48,9 +44,7 @@ export const fetchUpcoming = () => async dispatch => {
 
 //action creator
 export const fetchMovieDetails = id => async dispatch => {
-  const response = await TMDB.get(
-    `https://api.themoviedb.org/3/movie/${id}?api_key=${KEY}`,
-  );
+  const response = await TMDB.get(`/movie/${id}?api_key=${KEY}`);
 
   //dispatches action to matching type reducer
   dispatch({ type: "FETCH_MOVIE_DETAILS", payload: response.data });
@@ -59,8 +53,8 @@ export const fetchMovieDetails = id => async dispatch => {
 //action creator
 export const fetchCredits = id => async dispatch => {
   const response = await TMDB.get(
-    `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${KEY}
-    `,
+    `/movie/${id}/credits?api_key=${KEY}
+      `,
   );
 
   //dispatches action to matching type reducer
@@ -80,7 +74,7 @@ export const fetchTopRated = () => async dispatch => {
 //action creator
 export const fetchNowPlaying = () => async dispatch => {
   const response = await TMDB.get(
-    `https://api.themoviedb.org/3/movie/now_playing?api_key=${KEY}&language=en-US&page=1`,
+    `/movie/now_playing?api_key=${KEY}&language=en-US&page=1`,
   );
 
   //dispatches action to matching type reducer
@@ -90,7 +84,7 @@ export const fetchNowPlaying = () => async dispatch => {
 //action creator
 export const fetchPopular = () => async dispatch => {
   const response = await TMDB.get(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${KEY}&language=en-US&page=1`,
+    `/movie/popular?api_key=${KEY}&language=en-US&page=1`,
   );
 
   //dispatches action to matching type reducer
@@ -100,10 +94,17 @@ export const fetchPopular = () => async dispatch => {
 //action creator
 export const fetchTrailers = id => async dispatch => {
   const response = await TMDB.get(
-    `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${KEY}&language=en-US
-    `,
+    `/movie/${id}/videos?api_key=${KEY}&language=en-US`,
   );
 
   //dispatches action to matching type reducer
   dispatch({ type: "FETCH_TRAILERS", payload: response.data });
+};
+
+//action creator
+export const fetchSimilarMovies = id => async dispatch => {
+  const response = await TMDB.get(`/movie/${id}/similar?api_key=${KEY}`);
+
+  //dispatches action to matching type reducer
+  dispatch({ type: "FETCH_SIMILAR_MOVIES", payload: response.data });
 };

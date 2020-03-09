@@ -1,10 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { fetchMovieDetails, fetchCredits, fetchTrailers } from "../../actions";
+import {
+  fetchMovieDetails,
+  fetchCredits,
+  fetchTrailers,
+  fetchSimilarMovies,
+} from "../../actions";
 import "./movieDetails.scss";
 import TrailersCarousel from "./trailerscarousel/TrailersCarousel.js";
 import PeopleCarousel from "./peoplecarousel/PeopleCarousel";
+import Carousel from "../carousel/Carousel";
 
 class MovieDetails extends React.Component {
   componentDidMount() {
@@ -12,6 +18,7 @@ class MovieDetails extends React.Component {
     this.props.fetchMovieDetails(id);
     this.props.fetchCredits(id);
     this.props.fetchTrailers(id);
+    this.props.fetchSimilarMovies(id);
     console.log(id);
   }
 
@@ -32,8 +39,14 @@ class MovieDetails extends React.Component {
               <h2>Summary</h2>
               <p>{this.props.movie.overview}</p>
             </div>
+            <h1>Trailers</h1>
             <TrailersCarousel trailers={this.props.trailers} />
+
+            <h1>Cast</h1>
             <PeopleCarousel credits={this.props.credits} />
+
+            <h1>Similar Movies</h1>
+            <Carousel movies={this.props.similarMovies} />
           </main>
         </div>
       );
@@ -51,6 +64,7 @@ const mapStateToProps = state => {
     movie: state.movieDetails,
     credits: state.creditsData.cast,
     trailers: state.trailersData.results,
+    similarMovies: state.similarMoviesData.results,
   };
 };
 
@@ -58,4 +72,5 @@ export default connect(mapStateToProps, {
   fetchMovieDetails,
   fetchCredits,
   fetchTrailers,
+  fetchSimilarMovies,
 })(MovieDetails);
