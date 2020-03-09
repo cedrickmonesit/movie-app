@@ -2,7 +2,7 @@ import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 
 import Navigation from "./navigation/Navigation";
-import MovieList from "./MovieList";
+import MovieList from "./movielist/MovieList";
 import MovieDetails from "./moviedetails/MovieDetails";
 import Home from "./home/Home";
 import Footer from "./footer/Footer";
@@ -15,8 +15,8 @@ const App = () => {
       <div className="main">
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/moviedetails/:id" exact component={MovieDetails} />
-          <Route path="/movielist" exact component={MovieList} />
+          <Route path="/details/movie/:id" exact component={MovieDetails} />
+          <Route path="/list/movies" exact component={MovieList} />
         </Switch>
       </div>
       <Footer />

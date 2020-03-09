@@ -13,7 +13,7 @@ class MovieCarousel extends React.Component {
       return this.props.movies.map(movie => {
         return (
           <div key={movie.id} className="slide">
-            <Link to={`/moviedetails/${movie.id}`}>
+            <Link to={`/details/movie/${movie.id}`}>
               <img
                 className="slide-image"
                 src={`http://image.tmdb.org/t/p/original/${movie.poster_path}`}

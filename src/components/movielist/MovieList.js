@@ -1,11 +1,11 @@
 import React from "react";
 
-import MovieCard from "./moviecard/MovieCard";
+import MovieCard from "../moviecard/MovieCard";
 
 class MovieList extends React.Component {
   render() {
     return (
-      <div>
+      <div className="Movie-List-Container">
         <MovieCard />
       </div>
     );

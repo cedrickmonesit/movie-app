@@ -27,6 +27,7 @@ class PeopleCarousel extends React.Component {
             </div>
           );
         }
+        return "";
       });
     }
     return "";

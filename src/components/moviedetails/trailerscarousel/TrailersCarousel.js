@@ -21,6 +21,7 @@ class TrailerCarousel extends React.Component {
             </div>
           );
         }
+        return "";
       });
     }
     return "";
