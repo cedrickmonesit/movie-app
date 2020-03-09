@@ -39,14 +39,21 @@ class MovieDetails extends React.Component {
               <h2>Summary</h2>
               <p>{this.props.movie.overview}</p>
             </div>
-            <h1>Trailers</h1>
-            <TrailersCarousel trailers={this.props.trailers} />
 
-            <h1>Cast</h1>
-            <PeopleCarousel credits={this.props.credits} />
+            <div className="movie-details-carousel-container">
+              <h1 className="movie-details-main-genre">Trailers</h1>
+              <TrailersCarousel trailers={this.props.trailers} />
+            </div>
 
-            <h1>Similar Movies</h1>
-            <Carousel movies={this.props.similarMovies} />
+            <div className="movie-details-carousel-container">
+              <h1 className="movie-details-main-genre">Cast</h1>
+              <PeopleCarousel credits={this.props.credits} />
+            </div>
+
+            <div className="movie-details-carousel-container">
+              <h1 className="movie-details-main-genre">Similar Movies</h1>
+              <Carousel movies={this.props.similarMovies} />
+            </div>
           </main>
         </div>
       );

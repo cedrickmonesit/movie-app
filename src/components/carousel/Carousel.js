@@ -2,11 +2,23 @@ import React from "react";
 import Carousel from "@brainhubeu/react-carousel";
 import "@brainhubeu/react-carousel/lib/style.css";
 import { Link } from "react-router-dom";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
 
 import "./carousel.scss";
 
 class MovieCarousel extends React.Component {
+  renderRating(movie) {
+    if (movie.vote_average) {
+      return (
+        <div className="slide-movie-rating">
+          <FaStar className="carousel-star-rating" />
+          <p>{movie.vote_average}</p>
+        </div>
+      );
+    }
+    return "";
+  }
+
   mapMovies() {
     if (this.props.movies) {
       //loops through movies foreach movie returns jsx
@@ -14,11 +26,15 @@ class MovieCarousel extends React.Component {
         return (
           <div key={movie.id} className="slide">
             <Link to={`/details/movie/${movie.id}`}>
-              <img
-                className="slide-image"
-                src={`http://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                alt={movie.title}
-              />
+              <div className="carousel-image-container">
+                <img
+                  className="slide-image"
+                  src={`http://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                  alt={movie.title}
+                />
+                {this.renderRating(movie)}
+              </div>
+
               <div className="slide-title">
                 <p>{movie.title}</p>
               </div>

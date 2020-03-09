@@ -4,10 +4,38 @@
 
 .movie-details-main {
   color: white;
+  font-family: "Odibee Sans", "Acme";
+  font-size: 1rem;
+}
+.movie-details-main-genre {
+  margin-top: 0;
+  margin-left: 3%;
+  margin-bottom: 0;
+  font-size: 1.7rem;
+
+  color: white;
+}
+
+.movie-details-summary {
+  font-family: "Noto Sans TC", sans-serif;
+  padding: 0 1rem;
+}
+
+.movie-details-carousel-container {
+  margin-top: 5%;
 }
 
 @media (min-width: 600px) {
   .movie-details-header {
     height: 100vh;
+  }
+
+  .movie-details-main {
+    font-size: 1.1rem;
+    padding: 0 2rem;
+  }
+
+  .movie-details-main-genre {
+    font-size: 2.5rem;
   }
 }
