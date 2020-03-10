@@ -14,7 +14,7 @@ class PeopleCarousel extends React.Component {
         if (person.profile_path) {
           return (
             <div key={person.id} className="slide">
-              <Link to={`/actorDetails/${person.id}`}>
+              <Link to={`/details/actor/${person.id}`}>
                 <img
                   className="slide-image"
                   src={`http://image.tmdb.org/t/p/original/${person.profile_path}`}
