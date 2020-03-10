@@ -8,7 +8,7 @@
   text-align: center;
   width: 20rem;
   opacity: 1;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .slide:hover {
@@ -28,7 +28,7 @@
   margin: 0 auto;
   width: 6rem;
   height: 9rem;
-  border-radius: 5px;
+  border-radius: 0.3rem;
 }
 
 .slide-title {
@@ -52,7 +52,7 @@
   color: white;
   z-index: 9;
   opacity: 1;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
   top: 0;
 }
 

@@ -16,7 +16,11 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/details/movie/:id" exact component={MovieDetails} />
-          <Route path="/list/movies" exact component={MovieList} />
+          <Route
+            path="/list/search/movies/:movie"
+            exact
+            component={MovieList}
+          />
         </Switch>
       </div>
       <Footer />

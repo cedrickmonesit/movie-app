@@ -9,7 +9,7 @@ export const fetchMovies = searchTerm => async dispatch => {
   );
 
   dispatch({ type: "FETCH_MOVIES", payload: response.data });
-  history.push("/list/movies");
+  history.push(`/list/search/movies/${searchTerm}`);
 };
 
 //action creator
