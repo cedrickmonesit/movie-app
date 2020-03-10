@@ -1,19 +1,36 @@
 import React from "react";
 import { connect } from "react-redux";
 
-const MovieCard = props => {
-  const renderCard = () => {
+import { fetchMovies } from "../../actions";
+import "./movieCard.scss";
+import { FaStar } from "react-icons/fa";
+
+class MovieCard extends React.Component {
+  componentDidMount() {
+    this.props.fetchMovies(this.props.searchTerm);
+    console.log(this.props, "moviecard");
+  }
+
+  renderCard() {
     //if movies from api hasn't been loaded will render nothing, prevents error
-    if (props.movies) {
+    if (this.props.movies) {
       //loop through movies foreach movie return jsx
-      return props.movies.map(movie => {
+      return this.props.movies.map(movie => {
         if (movie.poster_path) {
           return (
-            <div key={movie.id}>
-              <img
-                src={`http://image.tmdb.org/t/p/w185/${movie.poster_path}`}
-                alt={movie.title}
-              />
+            <div key={movie.id} className="movie-card">
+              <div className="movie-card-image-container">
+                <img
+                  className="movie-card-image"
+                  src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                  alt={movie.title}
+                />
+                <div className="movie-card-rating ">
+                  <FaStar className="movie-card-star-rating" />
+                  <p>{movie.vote_average}</p>
+                </div>
+              </div>
+
               <p>{movie.title}</p>
             </div>
           );
@@ -22,9 +39,11 @@ const MovieCard = props => {
       });
     }
     return " ";
-  };
-  return renderCard();
-};
+  }
+  render() {
+    return this.renderCard();
+  }
+}
 
 //filter data from redux store to use in the component as a prop
 const mapStateToProps = state => {
@@ -32,4 +51,4 @@ const mapStateToProps = state => {
 };
 
 //connect function from react-redux to access redux store and dispatch actions
-export default connect(mapStateToProps)(MovieCard);
+export default connect(mapStateToProps, { fetchMovies })(MovieCard);

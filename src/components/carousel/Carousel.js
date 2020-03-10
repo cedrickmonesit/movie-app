@@ -29,7 +29,7 @@ class MovieCarousel extends React.Component {
               <div className="carousel-image-container">
                 <img
                   className="slide-image"
-                  src={`http://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                  src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                   alt={movie.title}
                 />
                 {this.renderRating(movie)}

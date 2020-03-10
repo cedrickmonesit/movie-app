@@ -1,0 +1,61 @@
+.movie-card {
+  border-radius: 5rem;
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.movie-card-image-container {
+  position: relative;
+}
+
+.movie-card-image {
+  border-radius: 0.3rem;
+  width: 6rem;
+  height: 9rem;
+}
+
+.movie-card-rating {
+  font-family: "Noto Sans TC", sans-serif;
+  position: absolute;
+  top: 0.5rem;
+  left: 0rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  font-size: 0.8rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0.2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.4rem;
+}
+
+.movie-card-rating p {
+  top: 1;
+  margin: 0;
+  margin-left: 0.4rem;
+}
+
+@media (min-width: 500px) {
+  .movie-card {
+    opacity: 0.6;
+
+    .movie-card-image {
+      width: 10rem;
+      height: 15rem;
+    }
+
+    .movie-card-rating {
+      top: 1rem;
+    }
+
+    .movie-card-rating p {
+      font-size: 1rem;
+      margin-top: 0;
+    }
+  }
+
+  .movie-card:hover {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
