@@ -14,12 +14,22 @@ import Carousel from "../carousel/Carousel";
 
 class MovieDetails extends React.Component {
   componentDidMount() {
+    this.fetchData();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      this.fetchData();
+    }
+  }
+
+  fetchData() {
     const id = this.props.match.params.id;
     this.props.fetchMovieDetails(id);
     this.props.fetchCredits(id);
     this.props.fetchTrailers(id);
     this.props.fetchSimilarMovies(id);
-    console.log(id);
+    console.log(id, "data fetched!");
   }
 
   renderDetails = () => {
