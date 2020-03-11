@@ -108,3 +108,12 @@ export const fetchSimilarMovies = id => async dispatch => {
   //dispatches action to matching type reducer
   dispatch({ type: "FETCH_SIMILAR_MOVIES", payload: response.data });
 };
+
+//action creator
+export const fetchGenres = () => async dispatch => {
+  const response = await TMDB.get(`/genre/movie/list?api_key=${KEY}
+  `);
+
+  //dispatches action to matching type reducer
+  dispatch({ type: "FETCH_GENRES", payload: response.data });
+};

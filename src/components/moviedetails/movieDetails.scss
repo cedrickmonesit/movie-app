@@ -1,5 +1,40 @@
 .movie-details-header {
+  font-family: "Odibee Sans", "Acme";
+  position: relative;
   height: 40vh;
+}
+
+.movie-details-header-info-container {
+  position: absolute;
+  align-items: center;
+  display: flex;
+  color: white;
+  bottom: 1.5rem;
+  left: 5%;
+}
+
+.movie-details-title p {
+  font-family: "Noto Sans TC", sans-serif;
+  margin: 0;
+}
+
+.movie-details-poster {
+  width: 6rem;
+  margin-right: 0.5rem;
+}
+
+.movie-details-header-info-container h1 {
+  margin: 0;
+}
+
+.movie-details-star-rating {
+  color: #ffd700;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.movie-details-summary-genres {
+  font-size: 0.8rem;
 }
 
 .movie-details-main {
@@ -28,6 +63,24 @@
 @media (min-width: 600px) {
   .movie-details-header {
     height: 100vh;
+  }
+
+  .movie-details-header-info-container h1 {
+    font-size: 3rem;
+  }
+
+  .movie-details-poster {
+    width: 10rem;
+    margin-right: 1rem;
+  }
+
+  .movie-details-title p {
+    font-size: 1.1rem;
+  }
+
+  .movie-details-star-rating {
+    color: #ffd700;
+    font-size: 1.2rem;
   }
 
   .movie-details-main {

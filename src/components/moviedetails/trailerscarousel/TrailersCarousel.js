@@ -12,19 +12,19 @@ class TrailerCarousel extends React.Component {
       return this.props.trailers.map(trailer => {
         if (trailer.key) {
           return (
-            <div key={trailer.id} className=" trailer-slide">
+            <div key={trailer.id} className="trailer-slide">
               <iframe
-                title="1"
-                src={`https://www.youtube.com/embed/${trailer.key}`}
+                title={trailer.id}
+                src={`https://www.youtube.com/embed/${trailer.key}?rel=0`}
                 allowFullScreen
               ></iframe>
             </div>
           );
         }
-        return "";
+        return null;
       });
     }
-    return "";
+    return null;
   }
 
   render() {

@@ -1,9 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { FaStar } from "react-icons/fa";
 
 import { fetchMovies } from "../../actions";
 import "./movieCard.scss";
-import { FaStar } from "react-icons/fa";
 
 class MovieCard extends React.Component {
   componentDidMount() {
@@ -19,19 +20,20 @@ class MovieCard extends React.Component {
         if (movie.poster_path) {
           return (
             <div key={movie.id} className="movie-card">
-              <div className="movie-card-image-container">
-                <img
-                  className="movie-card-image"
-                  src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                  alt={movie.title}
-                />
-                <div className="movie-card-rating ">
-                  <FaStar className="movie-card-star-rating" />
-                  <p>{movie.vote_average}</p>
+              <Link to={`/details/movie/${movie.id}`}>
+                <div className="movie-card-image-container">
+                  <img
+                    className="movie-card-image"
+                    src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                    alt={movie.title}
+                  />
+                  <div className="movie-card-rating ">
+                    <FaStar className="movie-card-star-rating" />
+                    <p>{movie.vote_average}</p>
+                  </div>
                 </div>
-              </div>
-
-              <p>{movie.title}</p>
+                <p>{movie.title}</p>
+              </Link>
             </div>
           );
         }
