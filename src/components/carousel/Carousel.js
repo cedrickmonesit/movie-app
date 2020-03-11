@@ -16,7 +16,7 @@ class MovieCarousel extends React.Component {
         </div>
       );
     }
-    return "";
+    return;
   }
 
   mapMovies() {

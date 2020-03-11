@@ -17,7 +17,7 @@ class PeopleCarousel extends React.Component {
               <Link to={`/details/actor/${person.id}`}>
                 <img
                   className="slide-image"
-                  src={`http://image.tmdb.org/t/p/original/${person.profile_path}`}
+                  src={`http://image.tmdb.org/t/p/w500/${person.profile_path}`}
                   alt={person.name}
                 />
                 <div className="slide-title">
@@ -27,10 +27,10 @@ class PeopleCarousel extends React.Component {
             </div>
           );
         }
-        return "";
+        return null;
       });
     }
-    return "";
+    return null;
   }
 
   render() {

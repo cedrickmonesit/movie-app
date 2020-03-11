@@ -19,6 +19,7 @@ class SearchBar extends React.Component {
     //searchTerm value is from props
     if (this.props.searchTerm) {
       this.props.fetchMovies(this.props.searchTerm);
+      window.scrollTo(0, 0);
     }
     return "";
   };
