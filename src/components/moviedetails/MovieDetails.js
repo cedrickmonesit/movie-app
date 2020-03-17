@@ -39,7 +39,7 @@ class MovieDetails extends React.Component {
 
   renderSimilarMovies(similarMovies) {
     if (similarMovies === undefined || similarMovies.length === 0) {
-      return "";
+      return null;
     }
     return (
       <div className="movie-details-carousel-container">
@@ -51,7 +51,7 @@ class MovieDetails extends React.Component {
 
   renderTrailers(trailers) {
     if (trailers === undefined || trailers.length === 0) {
-      return "";
+      return null;
     }
     return (
       <div className="movie-details-carousel-container">
@@ -61,9 +61,10 @@ class MovieDetails extends React.Component {
     );
   }
 
+  //if credits data have not loaded return nothing
   renderCredits(credits) {
     if (credits === undefined || credits.length === 0) {
-      return "";
+      return null;
     }
     return (
       <div className="movie-details-carousel-container">
@@ -84,6 +85,16 @@ class MovieDetails extends React.Component {
           return null;
         });
       });
+    }
+    return null;
+  }
+
+  //filter year/month/day from release date
+  renderDate(releaseDate) {
+    if (releaseDate) {
+      const date = releaseDate.split("-");
+      const year = date[0];
+      return year;
     }
     return null;
   }
@@ -115,7 +126,9 @@ class MovieDetails extends React.Component {
                   readonly
                 />
                 <p>
-                  {`${this.props.movie.status} |
+                  {`${this.props.movie.status} | ${this.renderDate(
+                    this.props.movie.release_date,
+                  )} |
                   ${this.props.movie.original_language}`}
                 </p>
                 <p className="movie-details-summary-genres">

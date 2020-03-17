@@ -117,3 +117,13 @@ export const fetchGenres = () => async dispatch => {
   //dispatches action to matching type reducer
   dispatch({ type: "FETCH_GENRES", payload: response.data });
 };
+
+//action creator
+export const fetchActor = id => async dispatch => {
+  const response = await TMDB.get(
+    `/person/${id}?api_key=${KEY}&language=en-US`,
+  );
+
+  //dispatches action to matching type reducer
+  dispatch({ type: "FETCH_ACTOR", payload: response.data });
+};
