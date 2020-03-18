@@ -28,7 +28,9 @@ class Home extends React.Component {
     console.log(this.props, "trending component");
     return (
       <div className="home-container">
-        <ImageCarousel movies={this.props.nowPlaying} />
+        <div className="home-container-image-carousel">
+          <ImageCarousel movies={this.props.nowPlaying} />
+        </div>
 
         <div className="home-container-carousel">
           <h1 className="home-container-genre">Upcoming</h1>

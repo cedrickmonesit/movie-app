@@ -20,6 +20,9 @@ class MovieDetails extends React.Component {
     this.fetchData();
   }
 
+  //checks if props changed compares it to previous props
+  //the props being changed is the id in the URL to make the request to the api using id
+  //scroll to the top
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.id !== this.props.match.params.id) {
       this.fetchData();
@@ -27,6 +30,7 @@ class MovieDetails extends React.Component {
     window.scrollTo(0, 0);
   }
 
+  //make api request using action creators
   fetchData() {
     const id = this.props.match.params.id;
     this.props.fetchMovieDetails(id);
@@ -156,7 +160,7 @@ class MovieDetails extends React.Component {
   };
   render() {
     console.log(this.props);
-    return <div> {this.renderDetails()}</div>;
+    return <React.Fragment> {this.renderDetails()}</React.Fragment>;
   }
 }
 

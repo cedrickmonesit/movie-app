@@ -1,10 +1,10 @@
-.movie-details-header {
+.actor-details-header {
   font-family: "Odibee Sans", "Acme";
   position: relative;
-  height: 40vh;
+  height: 35vh;
 }
 
-.movie-details-header-info-container {
+.actor-details-header-info-container {
   position: absolute;
   align-items: center;
   display: flex;
@@ -13,37 +13,37 @@
   left: 5%;
 }
 
-.movie-details-title p {
+.actor-details-title p {
   font-family: "Noto Sans TC", sans-serif;
   margin: 0;
 }
 
-.movie-details-poster {
+.actor-details-poster {
   width: 6rem;
   margin-right: 0.5rem;
   border-radius: 0.3rem;
 }
 
-.movie-details-header-info-container h1 {
+.actor-details-header-info-container h1 {
   margin: 0;
 }
 
-.movie-details-star-rating {
+.actor-details-star-rating {
   color: #ffd700;
   font-size: 1rem;
   margin: 0.5rem 0;
 }
 
-.movie-details-summary-genres {
+.actor-details-summary-genres {
   font-size: 0.8rem;
 }
 
-.movie-details-main {
+.actor-details-main {
   color: white;
   font-family: "Odibee Sans", "Acme";
   font-size: 1rem;
 }
-.movie-details-main-genre {
+.actor-details-main-genre {
   margin-top: 0;
   margin-left: 3%;
   margin-bottom: 0;
@@ -52,44 +52,44 @@
   color: white;
 }
 
-.movie-details-summary {
+.actor-details-summary {
   font-family: "Noto Sans TC", sans-serif;
   padding: 0 1rem;
 }
 
-.movie-details-carousel-container {
+.actor-details-carousel-container {
   margin-top: 5%;
 }
 
 @media (min-width: 600px) {
-  .movie-details-header {
-    height: 100vh;
+  .actor-details-header {
+    height: 47vh;
   }
 
-  .movie-details-header-info-container h1 {
+  .actor-details-header-info-container h1 {
     font-size: 3rem;
   }
 
-  .movie-details-poster {
+  .actor-details-poster {
     width: 10rem;
     margin-right: 1rem;
   }
 
-  .movie-details-title p {
+  .actor-details-title p {
     font-size: 1.1rem;
   }
 
-  .movie-details-star-rating {
+  .actor-details-star-rating {
     color: #ffd700;
     font-size: 1.2rem;
   }
 
-  .movie-details-main {
+  .actor-details-main {
     font-size: 1.1rem;
     padding: 0 2rem;
   }
 
-  .movie-details-main-genre {
+  .actor-details-main-genre {
     font-size: 2.5rem;
   }
 }

@@ -35,7 +35,7 @@ class TrailerCarousel extends React.Component {
       animationSpeed: 500,
       arrows: true,
       breakpoints: {
-        1150: {
+        1250: {
           slidesPerPage: 2,
           slidesPerScroll: 2,
         },
