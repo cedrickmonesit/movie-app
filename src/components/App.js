@@ -2,7 +2,7 @@ import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 
 import Navigation from "./navigation/Navigation";
-import SearchResults from "../searchresults/SearchResults";
+import SearchResults from "./searchresults/SearchResults";
 import MovieDetails from "./moviedetails/MovieDetails";
 import ActorDetails from "./actorDetails/ActorDetails";
 import Home from "./home/Home";
