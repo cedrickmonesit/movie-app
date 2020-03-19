@@ -20,6 +20,9 @@ class MovieDetails extends React.Component {
     this.fetchData();
   }
 
+  //checks if props changed compares it to previous props
+  //the props being changed is the id in the URL to make the request to the api using id
+  //scroll to the top
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.id !== this.props.match.params.id) {
       this.fetchData();
@@ -27,6 +30,7 @@ class MovieDetails extends React.Component {
     window.scrollTo(0, 0);
   }
 
+  //make api request using action creators
   fetchData() {
     const id = this.props.match.params.id;
     this.props.fetchMovieDetails(id);
@@ -39,7 +43,7 @@ class MovieDetails extends React.Component {
 
   renderSimilarMovies(similarMovies) {
     if (similarMovies === undefined || similarMovies.length === 0) {
-      return "";
+      return null;
     }
     return (
       <div className="movie-details-carousel-container">
@@ -51,7 +55,7 @@ class MovieDetails extends React.Component {
 
   renderTrailers(trailers) {
     if (trailers === undefined || trailers.length === 0) {
-      return "";
+      return null;
     }
     return (
       <div className="movie-details-carousel-container">
@@ -61,9 +65,10 @@ class MovieDetails extends React.Component {
     );
   }
 
+  //if credits data have not loaded return nothing
   renderCredits(credits) {
     if (credits === undefined || credits.length === 0) {
-      return "";
+      return null;
     }
     return (
       <div className="movie-details-carousel-container">
@@ -84,6 +89,16 @@ class MovieDetails extends React.Component {
           return null;
         });
       });
+    }
+    return null;
+  }
+
+  //filter year/month/day from release date
+  renderDate(releaseDate) {
+    if (releaseDate) {
+      const date = releaseDate.split("-");
+      const year = date[0];
+      return year;
     }
     return null;
   }
@@ -115,7 +130,9 @@ class MovieDetails extends React.Component {
                   readonly
                 />
                 <p>
-                  {`${this.props.movie.status} |
+                  {`${this.props.movie.status} | ${this.renderDate(
+                    this.props.movie.release_date,
+                  )} |
                   ${this.props.movie.original_language}`}
                 </p>
                 <p className="movie-details-summary-genres">
@@ -143,7 +160,7 @@ class MovieDetails extends React.Component {
   };
   render() {
     console.log(this.props);
-    return <div> {this.renderDetails()}</div>;
+    return <React.Fragment> {this.renderDetails()}</React.Fragment>;
   }
 }
 

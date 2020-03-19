@@ -71,7 +71,6 @@ const Navigation = props => {
 
 //filter data from redux store to use in the component as a prop
 const mapStateToProps = state => {
-  console.log(state, "state");
   return { movies: state.movieData.results, searchTerm: state.searchTerm };
   //this is setting what you want to call the data from the api just to use the data
 };

@@ -110,3 +110,28 @@
     width: 40%;
   }
 }
+
+//mobile landscape
+@media only screen and (min-device-width: 375px) and (max-device-width: 900px) and (orientation: landscape) {
+  .main-nav-top,
+  .main-nav-bottom {
+    height: 14%;
+  }
+}
+
+//older devices
+//iphone 5 & iphone 5s portrait
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (min-device-height: 320px) and (max-device-height: 568px) and (orientation: portrait) {
+  .main-nav-top,
+  .main-nav-bottom {
+    height: 11%;
+  }
+}
+
+//iphone 5 & iphone 5s landscape
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape) {
+  .main-nav-top,
+  .main-nav-bottom {
+    height: 20%;
+  }
+}

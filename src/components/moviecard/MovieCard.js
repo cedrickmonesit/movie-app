@@ -1,22 +1,15 @@
 import React from "react";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 
-import { fetchMovies } from "../../actions";
 import "./movieCard.scss";
 
-class MovieCard extends React.Component {
-  componentDidMount() {
-    this.props.fetchMovies(this.props.searchTerm);
-    console.log(this.props, "moviecard");
-  }
-
-  renderCard() {
+const MovieCard = props => {
+  const renderCard = movies => {
     //if movies from api hasn't been loaded will render nothing, prevents error
-    if (this.props.movies) {
+    if (movies) {
       //loop through movies foreach movie return jsx
-      return this.props.movies.map(movie => {
+      return movies.map(movie => {
         if (movie.poster_path) {
           return (
             <div key={movie.id} className="movie-card">
@@ -37,20 +30,13 @@ class MovieCard extends React.Component {
             </div>
           );
         }
-        return " ";
+        return null;
       });
     }
-    return " ";
-  }
-  render() {
-    return this.renderCard();
-  }
-}
+    return null;
+  };
 
-//filter data from redux store to use in the component as a prop
-const mapStateToProps = state => {
-  return { movies: state.movieData.results };
+  return renderCard(props.movies);
 };
 
-//connect function from react-redux to access redux store and dispatch actions
-export default connect(mapStateToProps, { fetchMovies })(MovieCard);
+export default MovieCard;
