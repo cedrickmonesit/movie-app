@@ -1,8 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { fetchActor } from "../../actions";
+import { fetchActor, fetchActorMovies } from "../../actions";
 import "./actorDetails.scss";
+import cinema from "../../images/cinema.jpg";
+import MovieList from "../movielist/MovieList";
 
 class ActorDetails extends React.Component {
   componentDidMount() {
@@ -12,6 +14,7 @@ class ActorDetails extends React.Component {
   fetchData() {
     const id = this.props.match.params.id;
     this.props.fetchActor(id);
+    this.props.fetchActorMovies(id);
     console.log(id);
   }
 
@@ -28,13 +31,35 @@ class ActorDetails extends React.Component {
     return null;
   }
 
+  renderGender(gender) {
+    const male = 2;
+    const female = 1;
+    if (gender === male) {
+      return "Male";
+    } else if (gender === female) {
+      return "Female";
+    }
+  }
+
+  renderJob(job, gender) {
+    if (job === "Acting" && gender) {
+      if (gender === 1) {
+        return "Actress";
+      } else if (gender === 2) {
+        return "Actor";
+      }
+    } else {
+      return job;
+    }
+  }
+
   renderDetails = () => {
     return (
       <div className="actor-details">
         <header
           className="actor-details-header"
           style={{
-            background: `linear-gradient(0deg, rgb(0, 0, 0) 5%, rgba(0, 0, 0, 0.45) 92%), rgb(255, 255, 255)`,
+            background: `linear-gradient(0deg, rgb(0, 0, 0) 5%, rgba(0, 0, 0, 0.45) 92%), url(${cinema}) 20% 20%/cover no-repeat border-box, rgb(255, 255, 255)`,
           }}
         >
           <div className="actor-details-header-info-container">
@@ -45,7 +70,14 @@ class ActorDetails extends React.Component {
             />
             <div className="actor-details-title">
               <h1>{this.props.actor.name}</h1>
-              <p></p>
+              <p>
+                {`${this.renderGender(this.props.actor.gender)} 
+                | 
+                ${this.renderJob(
+                  this.props.actor.known_for_department,
+                  this.props.actor.gender,
+                )}`}
+              </p>
               <p>{this.renderBirthday(this.props.actor.birthday)}</p>
               <p className="actor-details-summary-genres">
                 {this.props.actor.place_of_birth}
@@ -58,13 +90,14 @@ class ActorDetails extends React.Component {
             <h2>Biography</h2>
             <p>{this.props.actor.biography}</p>
           </div>
+          <MovieList movies={this.props.movies} />
         </main>
       </div>
     );
   };
 
   render() {
-    console.log(this.props, "actor");
+    console.log(this.props, "actor details props");
     return <React.Fragment>{this.renderDetails()}</React.Fragment>;
   }
 }
@@ -72,9 +105,11 @@ class ActorDetails extends React.Component {
 const mapStateToProps = state => {
   return {
     actor: state.actorData,
+    movies: state.actorMoviesData.cast,
   };
 };
 
 export default connect(mapStateToProps, {
   fetchActor,
+  fetchActorMovies,
 })(ActorDetails);

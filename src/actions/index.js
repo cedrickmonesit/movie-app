@@ -127,3 +127,13 @@ export const fetchActor = id => async dispatch => {
   //dispatches action to matching type reducer
   dispatch({ type: "FETCH_ACTOR", payload: response.data });
 };
+
+//action creator
+export const fetchActorMovies = id => async dispatch => {
+  const response = await TMDB.get(
+    `/person/${id}/movie_credits?api_key=${KEY}&language=en-US`,
+  );
+
+  //dispatches action to matching type reducer
+  dispatch({ type: "FETCH_ACTOR_MOVIES", payload: response.data });
+};

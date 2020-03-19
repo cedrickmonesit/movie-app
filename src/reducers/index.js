@@ -13,6 +13,7 @@ import trailersReducer from "./trailersReducer";
 import similarMoviesReducer from "./similarMoviesReducer";
 import genresReducer from "./genresReducer";
 import actorReducer from "./actorReducer";
+import actorMoviesReducer from "./actorMoviesReducer";
 
 //take reducer put it inside to combineReducers
 export default combineReducers({
@@ -30,4 +31,5 @@ export default combineReducers({
   similarMoviesData: similarMoviesReducer,
   genresData: genresReducer,
   actorData: actorReducer,
+  actorMoviesData: actorMoviesReducer,
 });

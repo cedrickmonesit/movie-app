@@ -61,9 +61,10 @@
   margin-top: 5%;
 }
 
+//desktop
 @media (min-width: 600px) {
   .actor-details-header {
-    height: 47vh;
+    height: 100vh;
   }
 
   .actor-details-header-info-container h1 {
@@ -91,5 +92,20 @@
 
   .actor-details-main-genre {
     font-size: 2.5rem;
+  }
+}
+
+//older devices
+//iphone 5 & iphone 5s portrait
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (min-device-height: 320px) and (max-device-height: 568px) and (orientation: portrait) {
+  .actor-details-header {
+    height: 45vh;
+  }
+}
+
+//iphone 5 & iphone 5s landscape
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape) {
+  .actor-details-header {
+    height: 100vh;
   }
 }
