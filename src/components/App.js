@@ -2,7 +2,7 @@ import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 
 import Navigation from "./navigation/Navigation";
-import MovieList from "./movielist/MovieList";
+import SearchResults from "../searchresults/SearchResults";
 import MovieDetails from "./moviedetails/MovieDetails";
 import ActorDetails from "./actorDetails/ActorDetails";
 import Home from "./home/Home";
@@ -21,7 +21,7 @@ const App = () => {
           <Route
             path="/list/search/movies/:movie"
             exact
-            component={MovieList}
+            component={SearchResults}
           />
         </Switch>
       </div>

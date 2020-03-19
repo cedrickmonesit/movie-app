@@ -9,6 +9,7 @@ import MovieList from "../movielist/MovieList";
 class ActorDetails extends React.Component {
   componentDidMount() {
     this.fetchData();
+    window.scrollTo(0, 0);
   }
 
   fetchData() {
@@ -53,6 +54,18 @@ class ActorDetails extends React.Component {
     }
   }
 
+  renderBiography(biography) {
+    if (biography) {
+      return (
+        <div className="actor-details-summary">
+          <h2>Biography</h2>
+          <p>{biography}</p>
+        </div>
+      );
+    }
+    return null;
+  }
+
   renderDetails = () => {
     return (
       <div className="actor-details">
@@ -86,11 +99,11 @@ class ActorDetails extends React.Component {
           </div>
         </header>
         <main className="actor-details-main">
-          <div className="actor-details-summary">
-            <h2>Biography</h2>
-            <p>{this.props.actor.biography}</p>
+          {this.renderBiography(this.props.actor.biography)}
+          <div className="actor-details-main-popular-roles">
+            <h2>Popular Roles</h2>
+            <MovieList movies={this.props.movies} />
           </div>
-          <MovieList movies={this.props.movies} />
         </main>
       </div>
     );

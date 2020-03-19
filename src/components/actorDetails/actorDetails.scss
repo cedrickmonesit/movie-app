@@ -40,9 +40,15 @@
 
 .actor-details-main {
   color: white;
-  font-family: "Odibee Sans", "Acme";
+  font-family: "Noto Sans TC", sans-serif;
   font-size: 1rem;
 }
+
+.actor-details-main-popular-roles h2 {
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
 .actor-details-main-genre {
   margin-top: 0;
   margin-left: 3%;
@@ -53,7 +59,6 @@
 }
 
 .actor-details-summary {
-  font-family: "Noto Sans TC", sans-serif;
   padding: 0 1rem;
 }
 
@@ -87,7 +92,7 @@
 
   .actor-details-main {
     font-size: 1.1rem;
-    padding: 0 2rem;
+    padding: 0 5rem;
   }
 
   .actor-details-main-genre {
