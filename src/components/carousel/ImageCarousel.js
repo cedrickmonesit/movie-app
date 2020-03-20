@@ -4,8 +4,9 @@ import "@brainhubeu/react-carousel/lib/style.css";
 import { Link } from "react-router-dom";
 
 import "./imageCarousel.scss";
+import renderMovieGenres from "../renderMovieGenres";
 
-class MovieCarousel extends React.Component {
+class ImageCarousel extends React.Component {
   mapMovies() {
     if (this.props.movies) {
       //loops through movies foreach movie returns jsx
@@ -22,7 +23,9 @@ class MovieCarousel extends React.Component {
                 <div className="img-slide-details">
                   <p className="img-slide__category">Now Playing</p>
                   <h2 className="img-slide__title"> {movie.title}</h2>
-                  <p className="img-slide__genre">Genre</p>
+                  <p className="img-slide__genre">
+                    {renderMovieGenres(movie.genre_ids, this.props.genres)}
+                  </p>
                 </div>
               </div>
             </Link>
@@ -45,4 +48,4 @@ class MovieCarousel extends React.Component {
   }
 }
 
-export default MovieCarousel;
+export default ImageCarousel;
