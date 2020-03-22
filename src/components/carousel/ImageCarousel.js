@@ -37,7 +37,7 @@ class ImageCarousel extends React.Component {
 
   render() {
     const settings = {
-      autoPlay: 4000,
+      autoPlay: 5000,
       slidesPerPage: 1,
       slidesPerScroll: 1,
       infinite: true,
