@@ -14,6 +14,7 @@ import "./movieDetails.scss";
 import TrailersCarousel from "./trailerscarousel/TrailersCarousel.js";
 import PeopleCarousel from "./peoplecarousel/PeopleCarousel";
 import Carousel from "../carousel/Carousel";
+import renderMovieGenres from "../renderMovieGenres";
 
 class MovieDetails extends React.Component {
   componentDidMount() {
@@ -78,21 +79,6 @@ class MovieDetails extends React.Component {
     );
   }
 
-  //filter the genres that the movie has compare it to the genres in the api request
-  renderMovieGenres(movieGenres) {
-    if (movieGenres && this.props.genres) {
-      return movieGenres.map(movieGenre => {
-        return this.props.genres.map(genre => {
-          if (movieGenre.id === genre.id) {
-            return `${genre.name} | `;
-          }
-          return null;
-        });
-      });
-    }
-    return null;
-  }
-
   //filter year/month/day from release date
   renderDate(releaseDate) {
     if (releaseDate) {
@@ -136,7 +122,10 @@ class MovieDetails extends React.Component {
                   ${this.props.movie.original_language}`}
                 </p>
                 <p className="movie-details-summary-genres">
-                  {this.renderMovieGenres(this.props.movie.genres)}
+                  {renderMovieGenres(
+                    this.props.movie.genres,
+                    this.props.genres,
+                  )}
                 </p>
               </div>
             </div>

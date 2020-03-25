@@ -25,7 +25,7 @@ const MovieCard = props => {
                     <p>{movie.vote_average}</p>
                   </div>
                 </div>
-                <p>{movie.title}</p>
+                <p className="movie-card-title">{movie.title}</p>
               </Link>
             </div>
           );

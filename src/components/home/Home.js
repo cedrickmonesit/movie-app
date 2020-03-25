@@ -12,6 +12,7 @@ import {
   fetchTopRated,
   fetchNowPlaying,
   fetchPopular,
+  fetchGenres,
 } from "../../actions";
 
 class Home extends React.Component {
@@ -23,13 +24,17 @@ class Home extends React.Component {
     this.props.fetchTopRated();
     this.props.fetchNowPlaying();
     this.props.fetchPopular();
+    this.props.fetchGenres();
   }
   render() {
-    console.log(this.props, "trending component");
+    console.log(this.props, "Home component");
     return (
       <div className="home-container">
         <div className="home-container-image-carousel">
-          <ImageCarousel movies={this.props.nowPlaying} />
+          <ImageCarousel
+            movies={this.props.nowPlaying}
+            genres={this.props.genres}
+          />
         </div>
 
         <div className="home-container-carousel">
@@ -67,6 +72,7 @@ const mapStateToProps = state => {
     topRated: state.topRatedData.results,
     nowPlaying: state.nowPlayingData.results,
     popular: state.popularData.results,
+    genres: state.genresData.genres,
   };
 };
 
@@ -77,4 +83,5 @@ export default connect(mapStateToProps, {
   fetchTopRated,
   fetchNowPlaying,
   fetchPopular,
+  fetchGenres,
 })(Home);

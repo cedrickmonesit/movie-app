@@ -1,5 +1,92 @@
 .main-footer {
+  display: flex;
+  flex-direction: column;
   background: #131517;
-  padding: 4rem;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 2rem;
+  padding-bottom: 0.2rem;
+  font-family: "Baloo Chettan 2", cursive;
+  font-size: 1.15rem;
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.main-footer-nav a {
+  text-decoration: none;
   color: white;
+  margin-right: 1rem;
+}
+
+.main-footer-item {
+  margin: 2rem 0;
+
+  a {
+    margin-left: 1.5rem;
+  }
+}
+
+.main-footer-copyright-name {
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 0.3rem;
+}
+
+.main-footer-tmdb-logo {
+  width: 8rem;
+}
+
+.main-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+
+  .main-footer-bottom-logo {
+    padding: 0.5rem;
+    a {
+      display: inline-block;
+    }
+  }
+
+  .main-footer-bottom-social-icons {
+    display: flex;
+    align-items: center;
+    .main-footer-social-icon {
+      font-size: 2rem;
+      margin-left: 1rem;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        color: rgba(255, 255, 255, 0.7);
+      }
+    }
+    a {
+      display: inline-block;
+    }
+  }
+}
+
+@media (min-width: 700px) {
+  .main-footer {
+    padding: 10% 15%;
+    font-size: 1.5;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .main-footer-bottom {
+      flex-direction: column;
+
+      .main-footer-bottom-logo {
+        img {
+          width: 12rem;
+        }
+      }
+      .main-footer-bottom-social-icons {
+        .main-footer-social-icon {
+          font-size: 2.5rem;
+        }
+      }
+    }
+  }
 }
