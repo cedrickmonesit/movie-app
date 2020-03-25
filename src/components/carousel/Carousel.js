@@ -7,6 +7,7 @@ import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
 import "./carousel.scss";
 
 class MovieCarousel extends React.Component {
+  //render the ratings for this movie
   renderRating(movie) {
     if (movie.vote_average) {
       return (
@@ -46,6 +47,7 @@ class MovieCarousel extends React.Component {
   }
 
   render() {
+    //settings for this carousel
     const settings = {
       slidesPerPage: 6,
       slidesPerScroll: 6,

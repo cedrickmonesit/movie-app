@@ -26,6 +26,7 @@ class SearchBar extends React.Component {
 
   render() {
     //onInputChange is from props
+    //onInputChange is an action creator
     return (
       <form onSubmit={this.onFormSubmit} className="searchbar">
         <input

@@ -11,6 +11,7 @@ import "./navigation.scss";
 import logo from "../../images/logo.png";
 
 const Navigation = props => {
+  //when the hamburger button is clicked toggle is-active class and hide class from elements
   const onClickHamburger = () => {
     document.querySelector(".hamburger").classList.toggle("is-active");
     document.querySelector(".main-nav-top").classList.toggle("hide");
@@ -75,6 +76,7 @@ const mapStateToProps = state => {
   //this is setting what you want to call the data from the api just to use the data
 };
 
+//connect function from react-redux to access redux store and dispatch actions
 export default connect(mapStateToProps, { onInputChange, fetchMovies })(
   Navigation,
 );

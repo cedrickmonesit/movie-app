@@ -1,3 +1,4 @@
+//This is a reusable function for components to use to compare genres to the movie id genres
 //filter the genres that the movie has compare it to the genres in the api request
 const renderMovieGenres = (movieGenres, genres) => {
   if (movieGenres && genres) {

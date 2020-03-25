@@ -5,6 +5,7 @@ import { FaFacebookSquare, FaInstagram, FaGithubSquare } from "react-icons/fa";
 import "./footer.scss";
 import TMDB from "../../images/TMDB.png";
 
+//Link tags are Router component used to navigate the one page App
 const Footer = () => {
   return (
     <div className="main-footer">
