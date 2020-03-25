@@ -26,6 +26,7 @@ class Home extends React.Component {
     this.props.fetchPopular();
     this.props.fetchGenres();
   }
+
   render() {
     console.log(this.props, "Home component");
     return (
@@ -64,7 +65,7 @@ class Home extends React.Component {
   }
 }
 
-//filter the data from the redux store to the Home component's props for passing onto the Carousel component as a prop
+//filter the data from the redux store to the Home component's props for passing onto the Carousel component as props
 const mapStateToProps = state => {
   return {
     trending: state.trendingData.results,

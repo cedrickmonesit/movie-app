@@ -7,11 +7,13 @@ import cinema from "../../images/cinema.jpg";
 import MovieList from "../movielist/MovieList";
 
 class ActorDetails extends React.Component {
+  //when component mounts fetch data and move to top of page
   componentDidMount() {
     this.fetchData();
     window.scrollTo(0, 0);
   }
 
+  //make api request with action creators
   fetchData() {
     const id = this.props.match.params.id;
     this.props.fetchActor(id);
@@ -32,6 +34,7 @@ class ActorDetails extends React.Component {
     return null;
   }
 
+  //checks what gender person is
   renderGender(gender) {
     const male = 2;
     const female = 1;
@@ -42,6 +45,7 @@ class ActorDetails extends React.Component {
     }
   }
 
+  //actor job checks if they're female or male
   renderJob(job, gender) {
     if (job === "Acting" && gender) {
       if (gender === 1) {
@@ -66,6 +70,7 @@ class ActorDetails extends React.Component {
     return null;
   }
 
+  //render actor page with biography and popular roles
   renderDetails = () => {
     return (
       <div className="actor-details">
@@ -110,11 +115,11 @@ class ActorDetails extends React.Component {
   };
 
   render() {
-    console.log(this.props, "actor details props");
     return <React.Fragment>{this.renderDetails()}</React.Fragment>;
   }
 }
 
+//add actor and movies object from Redux Store to props of this component
 const mapStateToProps = state => {
   return {
     actor: state.actorData,
@@ -122,6 +127,8 @@ const mapStateToProps = state => {
   };
 };
 
+//connect component to Redux Store using connect() to Provider {Reference index.js in SRC folder }
+//connect function from react-redux to access redux store and dispatch actions
 export default connect(mapStateToProps, {
   fetchActor,
   fetchActorMovies,

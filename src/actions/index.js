@@ -1,6 +1,9 @@
 import TMDB, { KEY } from "../apis/TMDB"; //Import baseURL & API Key
 import history from "../history";
 
+//action creators are used to create actions with a payload of the data from the API request
+//this is then dispatched to the reducers for State Management in the Redux Store
+
 //action creator
 //Applying redux-thunk to action creator that is async await to request API
 export const fetchMovies = searchTerm => async dispatch => {
@@ -26,7 +29,7 @@ export const onInputChange = searchTerm => {
 //Creates an action with a payload of the trending movie data from the API request
 //does not dispatch action until API data has been loaded
 export const fetchTrending = () => async dispatch => {
-  const response = await TMDB.get(`/trending/movie/week?api_key=${KEY}`);
+  const response = await TMDB.get(`/trending/all/week?api_key=${KEY}`);
 
   //dispatches action to matching type reducer
   dispatch({ type: "FETCH_TRENDING", payload: response.data });

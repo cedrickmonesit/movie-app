@@ -35,7 +35,6 @@ const MovieCard = props => {
     }
     return null;
   };
-
   return renderCard(props.movies);
 };
 

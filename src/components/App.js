@@ -10,6 +10,8 @@ import Footer from "./footer/Footer";
 import history from "../history";
 
 const App = () => {
+  //these routes are from Router used to navigate the one page app
+  //navigation is using history.push and Link tags to show components
   return (
     <Router history={history}>
       <Navigation />

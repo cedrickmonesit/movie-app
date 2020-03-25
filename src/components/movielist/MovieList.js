@@ -4,7 +4,8 @@ import MovieCard from "../moviecard/MovieCard";
 import "./movielist.scss";
 
 class MovieList extends React.Component {
-  //this prop is used when using react router
+  //if this.props.match exists which means not falsey return jsx else return nothing
+  //this.props.match is from Router provides movie name that the user searched
   renderSearchList() {
     if (this.props.match) {
       const searchTerm = this.props.match.params.movie;
