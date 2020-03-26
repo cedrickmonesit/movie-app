@@ -27,40 +27,46 @@ class Home extends React.Component {
     this.props.fetchGenres();
   }
 
-  render() {
-    console.log(this.props, "Home component");
+  renderHome(movies) {
     return (
-      <div className="home-container">
+      <React.Fragment>
         <div className="home-container-image-carousel">
           <ImageCarousel
-            movies={this.props.nowPlaying}
+            movies={movies.nowPlaying}
             genres={this.props.genres}
           />
         </div>
 
         <div className="home-container-carousel">
           <h1 className="home-container-genre">Upcoming</h1>
-          <Carousel movies={this.props.upcoming} />
+          <Carousel movies={movies.upcoming} />
           <hr className="home-container-coursel__separator" />
         </div>
 
         <div className="home-container-carousel">
           <h1 className="home-container-genre">Trending</h1>
-          <Carousel movies={this.props.trending} />
+          <Carousel movies={movies.trending} />
           <hr className="home-container-coursel__separator" />
         </div>
 
         <div className="home-container-carousel">
           <h1 className="home-container-genre">Popular</h1>
-          <Carousel movies={this.props.popular} />
+          <Carousel movies={movies.popular} />
           <hr className="home-container-coursel__separator" />
         </div>
 
         <div className="home-container-carousel">
           <h1 className="home-container-genre">Top Rated</h1>
-          <Carousel movies={this.props.topRated} />
+          <Carousel movies={movies.topRated} />
         </div>
-      </div>
+      </React.Fragment>
+    );
+  }
+
+  render() {
+    console.log(this.props, "Home component");
+    return (
+      <div className="home-container">{this.renderHome(this.props.movies)}</div>
     );
   }
 }
@@ -68,11 +74,15 @@ class Home extends React.Component {
 //filter the data from the redux store to the Home component's props for passing onto the Carousel component as props
 const mapStateToProps = state => {
   return {
-    trending: state.trendingData.results,
-    upcoming: state.upcomingData.results,
-    topRated: state.topRatedData.results,
-    nowPlaying: state.nowPlayingData.results,
-    popular: state.popularData.results,
+    movies: {
+      trending: state.trendingData.results,
+      upcoming: state.upcomingData.results,
+      topRated: state.topRatedData.results,
+      nowPlaying: state.nowPlayingData.results,
+      popular: state.popularData.results,
+    },
+    shows: {},
+
     genres: state.genresData.genres,
   };
 };
