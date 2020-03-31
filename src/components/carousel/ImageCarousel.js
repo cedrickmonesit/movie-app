@@ -4,35 +4,59 @@ import "@brainhubeu/react-carousel/lib/style.css";
 import { Link } from "react-router-dom";
 
 import "./imageCarousel.scss";
-import renderMovieGenres from "../renderMovieGenres";
+import renderMovieGenres from "../renderMovieGenres"; //reusable function
 
 class ImageCarousel extends React.Component {
-  mapMovies() {
-    if (this.props.movies) {
-      //loops through movies foreach movie returns jsx
-      return this.props.movies.map(movie => {
-        return (
-          <div key={movie.id} className="img-slide">
-            <Link to={`/details/movie/${movie.id}`}>
-              <div
-                className="img-slide-image"
-                style={{
-                  background: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(http://image.tmdb.org/t/p/original/${movie.backdrop_path}) center/cover no-repeat border-box, rgb(255, 255, 255)`,
-                }}
-              >
-                <div className="img-slide-details">
-                  <p className="img-slide__category">Now Playing</p>
-                  <h2 className="img-slide__title"> {movie.title}</h2>
-                  <p className="img-slide__genre">
-                    {renderMovieGenres(movie.genre_ids, this.props.genres)}
-                  </p>
-                </div>
+  renderMovies() {
+    //loops through movies foreach movie returns jsx
+    return this.props.movies.map(movie => {
+      return (
+        <div key={movie.id} className="img-slide">
+          <Link to={`/details/movie/${movie.id}`}>
+            <div
+              className="img-slide-image"
+              style={{
+                background: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(http://image.tmdb.org/t/p/original/${movie.backdrop_path}) center/cover no-repeat border-box, rgb(255, 255, 255)`,
+              }}
+            >
+              <div className="img-slide-details">
+                <p className="img-slide__category">{this.props.title}</p>
+                <h2 className="img-slide__title"> {movie.title}</h2>
+                <p className="img-slide__genre">
+                  {renderMovieGenres(movie.genre_ids, this.props.genres)}
+                </p>
               </div>
-            </Link>
-          </div>
-        );
-      });
-    }
+            </div>
+          </Link>
+        </div>
+      );
+    });
+  }
+
+  renderShows() {
+    //loops through movies foreach show returns jsx
+    return this.props.shows.map(show => {
+      return (
+        <div key={show.id} className="img-slide">
+          <Link to={`/details/movie/${show.id}`}>
+            <div
+              className="img-slide-image"
+              style={{
+                background: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(http://image.tmdb.org/t/p/original/${show.backdrop_path}) center/cover no-repeat border-box, rgb(255, 255, 255)`,
+              }}
+            >
+              <div className="img-slide-details">
+                <p className="img-slide__category">{this.props.title}</p>
+                <h2 className="img-slide__title"> {show.name}</h2>
+                <p className="img-slide__genre">
+                  {renderMovieGenres(show.genre_ids, this.props.genres)}
+                </p>
+              </div>
+            </div>
+          </Link>
+        </div>
+      );
+    });
   }
 
   render() {
@@ -45,7 +69,12 @@ class ImageCarousel extends React.Component {
       animationSpeed: 500,
       arrows: false,
     };
-    return <Carousel {...settings}>{this.mapMovies()}</Carousel>;
+    if (this.props.movies) {
+      return <Carousel {...settings}>{this.renderMovies()}</Carousel>;
+    } else if (this.props.shows) {
+      return <Carousel {...settings}>{this.renderShows()}</Carousel>;
+    }
+    return null;
   }
 }
 

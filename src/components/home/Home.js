@@ -2,9 +2,8 @@ import React from "react";
 import "slick-carousel/slick/slick.scss";
 import "slick-carousel/slick/slick-theme.scss";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-import Carousel from "../carousel/Carousel";
-import ImageCarousel from "../carousel/ImageCarousel";
 import "./home.scss";
 import {
   fetchTrending,
@@ -14,27 +13,41 @@ import {
   fetchPopular,
   fetchGenres,
 } from "../../actions";
+import Carousel from "../carousel/Carousel";
+import ImageCarousel from "../carousel/ImageCarousel";
 
 class Home extends React.Component {
   //lifecycle method
-  //when Home component mounts it will invoke these actions that fetch data from TMDB API
+  //when Home component mounts it will invoke these action creators that fetch data from TMDB API
   componentDidMount() {
+    //movies
     this.props.fetchTrending();
     this.props.fetchUpcoming();
     this.props.fetchTopRated();
     this.props.fetchNowPlaying();
     this.props.fetchPopular();
     this.props.fetchGenres();
+    this.props.fetchTopRated();
   }
 
-  renderHome(movies) {
+  renderHome(movies, genres) {
     return (
       <React.Fragment>
         <div className="home-container-image-carousel">
           <ImageCarousel
             movies={movies.nowPlaying}
-            genres={this.props.genres}
+            genres={genres}
+            title="Now Playing"
           />
+        </div>
+
+        <div className="home-container-movie-show-buttons">
+          <Link className="home-container-movies-button" to="/">
+            Movies
+          </Link>
+          <Link className="home-container-shows-button" to="/shows">
+            Shows
+          </Link>
         </div>
 
         <div className="home-container-carousel">
@@ -42,19 +55,16 @@ class Home extends React.Component {
           <Carousel movies={movies.upcoming} />
           <hr className="home-container-coursel__separator" />
         </div>
-
         <div className="home-container-carousel">
           <h1 className="home-container-genre">Trending</h1>
           <Carousel movies={movies.trending} />
           <hr className="home-container-coursel__separator" />
         </div>
-
         <div className="home-container-carousel">
           <h1 className="home-container-genre">Popular</h1>
           <Carousel movies={movies.popular} />
           <hr className="home-container-coursel__separator" />
         </div>
-
         <div className="home-container-carousel">
           <h1 className="home-container-genre">Top Rated</h1>
           <Carousel movies={movies.topRated} />
@@ -66,7 +76,9 @@ class Home extends React.Component {
   render() {
     console.log(this.props, "Home component");
     return (
-      <div className="home-container">{this.renderHome(this.props.movies)}</div>
+      <div className="home-container">
+        {this.renderHome(this.props.movies, this.props.genres)}
+      </div>
     );
   }
 }
@@ -81,7 +93,6 @@ const mapStateToProps = state => {
       nowPlaying: state.nowPlayingData.results,
       popular: state.popularData.results,
     },
-    shows: {},
 
     genres: state.genresData.genres,
   };

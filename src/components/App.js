@@ -5,6 +5,7 @@ import Navigation from "./navigation/Navigation";
 import SearchResults from "./searchresults/SearchResults";
 import MovieDetails from "./moviedetails/MovieDetails";
 import ActorDetails from "./actorDetails/ActorDetails";
+import Shows from "./home/Shows";
 import Home from "./home/Home";
 import Footer from "./footer/Footer";
 import history from "../history";
@@ -25,6 +26,7 @@ const App = () => {
             exact
             component={SearchResults}
           />
+          <Route path="/shows" exact component={Shows} />
         </Switch>
       </div>
       <Footer />

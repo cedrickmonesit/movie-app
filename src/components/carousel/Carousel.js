@@ -6,7 +6,7 @@ import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
 
 import "./carousel.scss";
 
-class MovieCarousel extends React.Component {
+class MovieShowCarousel extends React.Component {
   //render the ratings for this movie
   renderRating(movie) {
     if (movie.vote_average) {
@@ -20,7 +20,7 @@ class MovieCarousel extends React.Component {
     return;
   }
 
-  mapMovies() {
+  renderMovies() {
     if (this.props.movies) {
       //loops through movies foreach movie returns jsx
       return this.props.movies.map(movie => {
@@ -38,6 +38,32 @@ class MovieCarousel extends React.Component {
 
               <div className="slide-title">
                 <p>{movie.title}</p>
+              </div>
+            </Link>
+          </div>
+        );
+      });
+    }
+  }
+
+  renderShows() {
+    if (this.props.shows) {
+      //loops through movies foreach movie returns jsx
+      return this.props.shows.map(show => {
+        return (
+          <div key={show.id} className="slide">
+            <Link to={`/details/movie/${show.id}`}>
+              <div className="carousel-image-container">
+                <img
+                  className="slide-image"
+                  src={`http://image.tmdb.org/t/p/w500/${show.poster_path}`}
+                  alt={show.name}
+                />
+                {this.renderRating(show)}
+              </div>
+
+              <div className="slide-title">
+                <p>{show.name}</p>
               </div>
             </Link>
           </div>
@@ -77,18 +103,31 @@ class MovieCarousel extends React.Component {
         },
       },
     };
-
-    return (
-      <Carousel
-        {...settings}
-        arrowLeft={<FaChevronLeft className="carousel-arrow-left" />}
-        arrowRight={<FaChevronRight className="carousel-arrow-right" />}
-        addArrowClickHandler
-      >
-        {this.mapMovies()}
-      </Carousel>
-    );
+    if (this.props.movies) {
+      return (
+        <Carousel
+          {...settings}
+          arrowLeft={<FaChevronLeft className="carousel-arrow-left" />}
+          arrowRight={<FaChevronRight className="carousel-arrow-right" />}
+          addArrowClickHandler
+        >
+          {this.renderMovies()}
+        </Carousel>
+      );
+    } else if (this.props.shows) {
+      return (
+        <Carousel
+          {...settings}
+          arrowLeft={<FaChevronLeft className="carousel-arrow-left" />}
+          arrowRight={<FaChevronRight className="carousel-arrow-right" />}
+          addArrowClickHandler
+        >
+          {this.renderShows()}
+        </Carousel>
+      );
+    }
+    return null;
   }
 }
 
-export default MovieCarousel;
+export default MovieShowCarousel;

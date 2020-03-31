@@ -29,7 +29,7 @@ export const onInputChange = searchTerm => {
 //Creates an action with a payload of the trending movie data from the API request
 //does not dispatch action until API data has been loaded
 export const fetchTrending = () => async dispatch => {
-  const response = await TMDB.get(`/trending/all/week?api_key=${KEY}`);
+  const response = await TMDB.get(`/trending/movie/day?api_key=${KEY}`);
 
   //dispatches action to matching type reducer
   dispatch({ type: "FETCH_TRENDING", payload: response.data });
@@ -139,4 +139,54 @@ export const fetchActorMovies = id => async dispatch => {
 
   //dispatches action to matching type reducer
   dispatch({ type: "FETCH_ACTOR_MOVIES", payload: response.data });
+};
+
+//action creator
+export const fetchTvPopular = () => async dispatch => {
+  const response = await TMDB.get(`/tv/popular?api_key=${KEY}&language=en-US&page=1
+  `);
+
+  //dispatches action to matching type reducer
+  dispatch({ type: "FETCH_TV_POPULAR", payload: response.data });
+};
+
+//action creator
+export const fetchTvTopRated = () => async dispatch => {
+  const response = await TMDB.get(
+    `/tv/top_rated?api_key=${KEY}&language=en-US&page=1
+    `,
+  );
+
+  //dispatches action to matching type reducer
+  dispatch({ type: "FETCH_TV_TOP_RATED", payload: response.data });
+};
+
+//action creator
+export const fetchTvAiringToday = () => async dispatch => {
+  const response = await TMDB.get(
+    `/tv/airing_today?api_key=${KEY}&language=en-US`,
+  );
+
+  //dispatches action to matching type reducer
+  dispatch({ type: "FETCH_TV_AIRING_TODAY", payload: response.data });
+};
+
+//action creator
+export const fetchTvOnAir = () => async dispatch => {
+  const response = await TMDB.get(
+    `/tv/on_the_air?api_key=${KEY}&language=en-US`,
+  );
+
+  //dispatches action to matching type reducer
+  dispatch({ type: "FETCH_TV_ON_AIR", payload: response.data });
+};
+
+//action creator
+export const fetchTvTrending = () => async dispatch => {
+  const response = await TMDB.get(
+    `/trending/tv/day?api_key=${KEY}&language=en-US`,
+  );
+
+  //dispatches action to matching type reducer
+  dispatch({ type: "FETCH_TV_TRENDING", payload: response.data });
 };
