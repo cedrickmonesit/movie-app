@@ -15,6 +15,13 @@ import genresReducer from "./genresReducer";
 import actorReducer from "./actorReducer";
 import actorMoviesReducer from "./actorMoviesReducer";
 
+//shows reducer
+import tvPopularReducer from "./shows/tvPopularReducer";
+import tvTopRatedReducer from "./shows/tvTopRatedReducer";
+import tvOnAir from "./shows/tvOnAir";
+import tvAiringToday from "./shows/tvAiringToday";
+import tvTrending from "./shows/tvTrending";
+
 //take reducer put it inside to combineReducers
 export default combineReducers({
   //this will be named in the store
@@ -32,4 +39,11 @@ export default combineReducers({
   genresData: genresReducer,
   actorData: actorReducer,
   actorMoviesData: actorMoviesReducer,
+
+  //shows
+  tvPopularData: tvPopularReducer,
+  tvTopRatedData: tvTopRatedReducer,
+  tvOnAir: tvOnAir,
+  tvAiringToday: tvAiringToday,
+  tvTrending: tvTrending,
 });
