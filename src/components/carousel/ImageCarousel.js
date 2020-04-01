@@ -7,6 +7,7 @@ import "./imageCarousel.scss";
 import renderMovieGenres from "../renderMovieGenres"; //reusable function
 
 class ImageCarousel extends React.Component {
+  //renders imagecarousel with movies values
   renderMovies() {
     //loops through movies foreach movie returns jsx
     return this.props.movies.map(movie => {
@@ -33,6 +34,7 @@ class ImageCarousel extends React.Component {
     });
   }
 
+  //renders imagecarousel with shows values
   renderShows() {
     //loops through movies foreach show returns jsx
     return this.props.shows.map(show => {
@@ -69,6 +71,8 @@ class ImageCarousel extends React.Component {
       animationSpeed: 500,
       arrows: false,
     };
+
+    //conditional that determines which one is truthy to show the jsx
     if (this.props.movies) {
       return <Carousel {...settings}>{this.renderMovies()}</Carousel>;
     } else if (this.props.shows) {

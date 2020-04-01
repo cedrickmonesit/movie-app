@@ -30,6 +30,8 @@ class Home extends React.Component {
     this.props.fetchTopRated();
   }
 
+  //will render movies with carousels shows are rendered through the shows component
+  //movies and shows are switched using react-router-dom {Link} movies are with the Home component while shows are in the shows component
   renderHome(movies, genres) {
     return (
       <React.Fragment>
@@ -99,6 +101,7 @@ const mapStateToProps = state => {
 };
 
 //connect function from react-redux to access redux store and dispatch actions
+//to use action creators it must be passed into the connect()
 export default connect(mapStateToProps, {
   fetchTrending,
   fetchUpcoming,
