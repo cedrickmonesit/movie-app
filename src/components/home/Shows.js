@@ -26,6 +26,7 @@ class Shows extends React.Component {
   }
 
   render() {
+    //destructuring component props to use this.props.shows & this.props.genres
     const { shows, genres } = this.props;
     return (
       <div className="home-container">

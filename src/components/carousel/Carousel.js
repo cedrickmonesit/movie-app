@@ -20,6 +20,7 @@ class MovieShowCarousel extends React.Component {
     return;
   }
 
+  //renders carousel with movies values
   renderMovies() {
     if (this.props.movies) {
       //loops through movies foreach movie returns jsx
@@ -46,6 +47,7 @@ class MovieShowCarousel extends React.Component {
     }
   }
 
+  //renders carousel with shows values
   renderShows() {
     if (this.props.shows) {
       //loops through movies foreach movie returns jsx
@@ -103,6 +105,8 @@ class MovieShowCarousel extends React.Component {
         },
       },
     };
+
+    //this conditional will check whether movies or show should be shown depending which one is truthy
     if (this.props.movies) {
       return (
         <Carousel
