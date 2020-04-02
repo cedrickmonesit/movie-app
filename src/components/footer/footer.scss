@@ -11,6 +11,11 @@
   a {
     text-decoration: none;
     color: white;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.7);
+    }
   }
 }
 
@@ -55,7 +60,7 @@
     align-items: center;
     .main-footer-social-icon {
       font-size: 2rem;
-      margin-left: 1rem;
+      margin-left: 0.5rem;
       transition: all 0.3s ease-in-out;
       &:hover {
         color: rgba(255, 255, 255, 0.7);
@@ -84,6 +89,7 @@
       }
       .main-footer-bottom-social-icons {
         .main-footer-social-icon {
+          margin-left: 1rem;
           font-size: 2.5rem;
         }
       }
