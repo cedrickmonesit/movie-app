@@ -47,7 +47,7 @@ const Navigation = props => {
           <Link to="/">
             <AiFillHome className="icon icon-home" />
           </Link>
-          <Link to="/user/login">
+          <Link to="/user/signin">
             <FaUserAlt className="icon" />
           </Link>
           <Link to="/">
@@ -59,7 +59,7 @@ const Navigation = props => {
         <Link to="/">
           <AiFillHome className="icon icon-home" />
         </Link>
-        <Link to="/user/login">
+        <Link onClick={onClickHamburger} to="/user/signin">
           <FaUserAlt className="icon" />
         </Link>
         <Link to="/">

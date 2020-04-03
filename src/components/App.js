@@ -20,7 +20,7 @@ const App = () => {
       <div className="main">
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/user/login" exact component={Login} />
+          <Route path="/user/signin" exact component={Login} />
           <Route path="/details/movie/:id" exact component={MovieDetails} />
           <Route path="/details/actor/:id" exact component={ActorDetails} />
           <Route
