@@ -7,6 +7,7 @@ import MovieDetails from "./moviedetails/MovieDetails";
 import ActorDetails from "./actorDetails/ActorDetails";
 import Shows from "./home/Shows";
 import Home from "./home/Home";
+import Login from "./login/Login";
 import Footer from "./footer/Footer";
 import history from "../history";
 
@@ -19,10 +20,11 @@ const App = () => {
       <div className="main">
         <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/user/login" exact component={Login} />
           <Route path="/details/movie/:id" exact component={MovieDetails} />
           <Route path="/details/actor/:id" exact component={ActorDetails} />
           <Route
-            path="/list/search/movies/:movie"
+            path="/list/search/results/:searchterm"
             exact
             component={SearchResults}
           />

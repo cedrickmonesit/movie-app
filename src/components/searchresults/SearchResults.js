@@ -10,10 +10,19 @@ class MovieCard extends React.Component {
     this.fetchData();
   }
 
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.match.params.searchterm !== this.props.match.params.searchterm
+    ) {
+      this.fetchData();
+    }
+    window.scrollTo(0, 0);
+  }
+
   fetchData() {
     //this makes sure that if the document is refreshed the component can fetch the data by itself according to the URL searchterm variable using Router
     if (this.props.match) {
-      this.props.fetchMovies(this.props.match.params.movie);
+      this.props.fetchMovies(this.props.match.params.searchterm);
     }
   }
 
