@@ -28,7 +28,7 @@ class MovieCard extends React.Component {
 
   renderSearchTerm() {
     if (this.props.match) {
-      return this.props.match.params.movie;
+      return this.props.match.params.searchterm;
     }
   }
 
