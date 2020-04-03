@@ -8,11 +8,11 @@ import history from "../history";
 //Applying redux-thunk to action creator that is async await to request API
 export const fetchMovies = searchTerm => async dispatch => {
   const response = await TMDB.get(
-    `/search/movie?api_key=${KEY}&query=${searchTerm}`,
+    `/search/multi?api_key=${KEY}&query=${searchTerm}`,
   );
 
   dispatch({ type: "FETCH_MOVIES", payload: response.data });
-  history.push(`/list/search/movies/${searchTerm}`);
+  history.push(`/list/search/results/${searchTerm}`);
 };
 
 //action creator
