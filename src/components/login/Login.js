@@ -5,7 +5,11 @@ import "./login.scss";
 import wordLogo from "../../images/word-logo.png";
 import ImageCarousel from "../carousel/ImageCarousel";
 import "../carousel/imageCarousel.scss";
-import { fetchNowPlaying, fetchGenres } from "../../actions";
+import {
+  fetchNowPlaying,
+  fetchGenres,
+  createSignInSession,
+} from "../../actions";
 
 //login page
 class Login extends React.Component {
@@ -14,9 +18,15 @@ class Login extends React.Component {
     this.props.fetchNowPlaying();
     this.props.fetchGenres();
   }
+
+  onClickSignIn = () => {
+    console.log("sign in");
+    this.props.createSignInSession();
+  };
+
   //login is reusing the imagecarousel component resized
   render() {
-    console.log(this.props.nowPlaying);
+    console.log(this.props);
     return (
       <div className="main-signin">
         <div className="main-signin-container">
@@ -30,7 +40,9 @@ class Login extends React.Component {
             <p>Film Flix</p>
           </header>
           <div className="main-signin-buttons">
-            <button className="main-signin-button">Sign In</button>
+            <button className="main-signin-button" onClick={this.onClickSignIn}>
+              Sign In
+            </button>
             <button className="main-signin-button">Guest</button>
             <div className="main-signin-content">
               <p>
@@ -58,9 +70,12 @@ const mapStateToProps = state => {
   return {
     nowPlaying: state.nowPlayingData.results,
     genres: state.genresData.genres,
+    session: state.signInSession,
   };
 };
 
-export default connect(mapStateToProps, { fetchNowPlaying, fetchGenres })(
-  Login,
-);
+export default connect(mapStateToProps, {
+  fetchNowPlaying,
+  fetchGenres,
+  createSignInSession,
+})(Login);

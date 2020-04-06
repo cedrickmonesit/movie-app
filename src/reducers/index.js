@@ -22,6 +22,10 @@ import tvOnAir from "./shows/tvOnAir";
 import tvAiringToday from "./shows/tvAiringToday";
 import tvTrending from "./shows/tvTrending";
 
+//sign in
+import signInTokenReducer from "./login/signInTokenReducer";
+import signInSessionReducer from "./login/signInSessionReducer";
+
 //take reducer put it inside to combineReducers
 export default combineReducers({
   //this will be named in the store
@@ -46,4 +50,8 @@ export default combineReducers({
   tvOnAir: tvOnAir,
   tvAiringToday: tvAiringToday,
   tvTrending: tvTrending,
+
+  //sign in
+  signInToken: signInTokenReducer,
+  signInSession: signInSessionReducer,
 });

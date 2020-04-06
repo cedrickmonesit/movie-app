@@ -190,3 +190,34 @@ export const fetchTvTrending = () => async dispatch => {
   //dispatches action to matching type reducer
   dispatch({ type: "FETCH_TV_TRENDING", payload: response.data });
 };
+
+export const createSignInToken = () => async (dispatch, getState) => {
+  const response = await TMDB.get(`/authentication/token/new?api_key=${KEY}`);
+
+  //dispatches action to matching type reducer
+  await dispatch({
+    type: "CREATE_SIGN_IN_TOKEN",
+    payload: response.data.request_token,
+  });
+
+  window.location.replace(
+    `https://www.themoviedb.org/authenticate/${
+      getState().signInToken
+    }?redirect_to=http://localhost:3000/user/token/approved`,
+  );
+};
+
+export const createSignInSession = () => async (dispatch, getState) => {
+  /*await dispatch(createSignInToken());
+  console.log(getState().signInToken);*/
+
+  const response = await TMDB.post(
+    `/authentication/session/new?api_key=${KEY}`,
+    { request_token: getState().signInToken },
+  );
+
+  dispatch({
+    type: "CREATE_SIGN_IN_SESSION",
+    payload: response.data.session_id,
+  });
+};
