@@ -8,6 +8,8 @@ import ActorDetails from "./actorDetails/ActorDetails";
 import Shows from "./home/Shows";
 import Home from "./home/Home";
 import Login from "./login/Login";
+import Approval from "./login/Approval";
+import Account from "./account/Account";
 import Footer from "./footer/Footer";
 import history from "../history";
 
@@ -21,6 +23,8 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/user/signin" exact component={Login} />
+          <Route path="/user/approval" exact component={Approval} />
+          <Route path="/user/account" exact component={Account} />
           <Route path="/details/movie/:id" exact component={MovieDetails} />
           <Route path="/details/actor/:id" exact component={ActorDetails} />
           <Route

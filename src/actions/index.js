@@ -190,3 +190,57 @@ export const fetchTvTrending = () => async dispatch => {
   //dispatches action to matching type reducer
   dispatch({ type: "FETCH_TV_TRENDING", payload: response.data });
 };
+
+//creat token
+//create token for approval by user
+//this will be invoked in the sign in component
+export const createSignInToken = () => async (dispatch, getState) => {
+  const response = await TMDB.get(`/authentication/token/new?api_key=${KEY}`);
+
+  //dispatches action to matching type reducer
+  await dispatch({
+    type: "CREATE_SIGN_IN_TOKEN",
+    payload: response.data.request_token,
+  });
+  console.log(getState().signInToken);
+  //go to the TMDB website with token to get user approval
+  window.open(
+    `https://www.themoviedb.org/authenticate/${getState().signInToken}`,
+    "_newtab",
+  );
+};
+
+//sign in
+//create a session after token has been approved
+//this will be invoked in the approval component
+export const createSignInSession = () => async (dispatch, getState) => {
+  //when the token is approved use the token to create a new session to access user account
+  const response = await TMDB.post(
+    `/authentication/session/new?api_key=${KEY}`,
+    { request_token: getState().signInToken },
+  );
+
+  await dispatch({
+    type: "CREATE_SIGN_IN_SESSION",
+    payload: response.data.session_id,
+  });
+  console.log(getState().signInSession);
+};
+
+//sign out
+//this will delete the user session basically signing out
+export const deleteSignOutSession = session => async (dispatch, getState) => {
+  const response = await TMDB.delete(
+    `https://api.themoviedb.org/3/authentication/session?api_key=80f9558ee00fbe6653d7ee77b88e6eeb
+  `,
+    {
+      data: { session_id: session },
+    },
+  );
+
+  await dispatch({
+    type: "DELETE_SIGN_OUT_SESSION",
+    payload: response.data,
+  });
+  console.log(getState().signOutSession);
+};
