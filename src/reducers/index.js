@@ -25,6 +25,7 @@ import tvTrending from "./shows/tvTrending";
 //sign in
 import signInTokenReducer from "./login/signInTokenReducer";
 import signInSessionReducer from "./login/signInSessionReducer";
+import signOutSessionReducer from "./login/signOutSessionReducer";
 
 //take reducer put it inside to combineReducers
 export default combineReducers({
@@ -54,4 +55,5 @@ export default combineReducers({
   //sign in
   signInToken: signInTokenReducer,
   signInSession: signInSessionReducer,
+  signOutSession: signOutSessionReducer,
 });

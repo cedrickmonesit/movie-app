@@ -5,11 +5,8 @@ import "./login.scss";
 import wordLogo from "../../images/word-logo.png";
 import ImageCarousel from "../carousel/ImageCarousel";
 import "../carousel/imageCarousel.scss";
-import {
-  fetchNowPlaying,
-  fetchGenres,
-  createSignInSession,
-} from "../../actions";
+import { fetchNowPlaying, fetchGenres, createSignInToken } from "../../actions";
+import history from "../../history";
 
 //login page
 class Login extends React.Component {
@@ -19,14 +16,22 @@ class Login extends React.Component {
     this.props.fetchGenres();
   }
 
+  //user will automaticall navigate to approval component once redirected to user approval of the token created
+  //if token is denied by user, approval page will not be able to create a session
   onClickSignIn = () => {
-    console.log("sign in");
-    this.props.createSignInSession();
+    console.log("Token Created!");
+    this.props.createSignInToken();
+    this.onClickNavToApproval();
+  };
+
+  //this function is used to navigate to approval component using React Router
+  //approval component will create session if user approves the token
+  onClickNavToApproval = () => {
+    history.push("/user/approval");
   };
 
   //login is reusing the imagecarousel component resized
   render() {
-    console.log(this.props);
     return (
       <div className="main-signin">
         <div className="main-signin-container">
@@ -70,12 +75,12 @@ const mapStateToProps = state => {
   return {
     nowPlaying: state.nowPlayingData.results,
     genres: state.genresData.genres,
-    session: state.signInSession,
+    token: state.signInToken,
   };
 };
 
 export default connect(mapStateToProps, {
   fetchNowPlaying,
   fetchGenres,
-  createSignInSession,
+  createSignInToken,
 })(Login);
