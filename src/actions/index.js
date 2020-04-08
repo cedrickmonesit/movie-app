@@ -6,7 +6,7 @@ import history from "../history";
 
 //action creator
 //Applying redux-thunk to action creator that is async await to request API
-export const fetchMovies = searchTerm => async dispatch => {
+export const fetchMovies = (searchTerm) => async (dispatch) => {
   const response = await TMDB.get(
     `/search/multi?api_key=${KEY}&query=${searchTerm}`,
   );
@@ -17,7 +17,7 @@ export const fetchMovies = searchTerm => async dispatch => {
 
 //action creator
 //Creates an action with a payload that is the changed input
-export const onInputChange = searchTerm => {
+export const onInputChange = (searchTerm) => {
   //connect function in component will handle dispatch of this action
   return {
     type: "ON_INPUT_CHANGE",
@@ -28,7 +28,7 @@ export const onInputChange = searchTerm => {
 //action creator
 //Creates an action with a payload of the trending movie data from the API request
 //does not dispatch action until API data has been loaded
-export const fetchTrending = () => async dispatch => {
+export const fetchTrending = () => async (dispatch) => {
   const response = await TMDB.get(`/trending/movie/day?api_key=${KEY}`);
 
   //dispatches action to matching type reducer
@@ -38,7 +38,7 @@ export const fetchTrending = () => async dispatch => {
 //action creator
 //Creates an action with a payload of upcoming movie data from the API request
 //does not dispatch action until API data has been loaded
-export const fetchUpcoming = () => async dispatch => {
+export const fetchUpcoming = () => async (dispatch) => {
   const response = await TMDB.get(`/movie/upcoming?api_key=${KEY}`);
 
   //dispatches action to matching type reducer
@@ -46,7 +46,7 @@ export const fetchUpcoming = () => async dispatch => {
 };
 
 //action creator
-export const fetchMovieDetails = id => async dispatch => {
+export const fetchMovieDetails = (id) => async (dispatch) => {
   const response = await TMDB.get(`/movie/${id}?api_key=${KEY}`);
 
   //dispatches action to matching type reducer
@@ -54,7 +54,7 @@ export const fetchMovieDetails = id => async dispatch => {
 };
 
 //action creator
-export const fetchCredits = id => async dispatch => {
+export const fetchCredits = (id) => async (dispatch) => {
   const response = await TMDB.get(
     `/movie/${id}/credits?api_key=${KEY}
       `,
@@ -65,7 +65,7 @@ export const fetchCredits = id => async dispatch => {
 };
 
 //action creator
-export const fetchTopRated = () => async dispatch => {
+export const fetchTopRated = () => async (dispatch) => {
   const response = await TMDB.get(
     `https://api.themoviedb.org/3/movie/top_rated?api_key=${KEY}&language=en-US&page=1`,
   );
@@ -75,7 +75,7 @@ export const fetchTopRated = () => async dispatch => {
 };
 
 //action creator
-export const fetchNowPlaying = () => async dispatch => {
+export const fetchNowPlaying = () => async (dispatch) => {
   const response = await TMDB.get(
     `/movie/now_playing?api_key=${KEY}&language=en-US&page=1`,
   );
@@ -85,7 +85,7 @@ export const fetchNowPlaying = () => async dispatch => {
 };
 
 //action creator
-export const fetchPopular = () => async dispatch => {
+export const fetchPopular = () => async (dispatch) => {
   const response = await TMDB.get(
     `/movie/popular?api_key=${KEY}&language=en-US&page=1`,
   );
@@ -95,7 +95,7 @@ export const fetchPopular = () => async dispatch => {
 };
 
 //action creator
-export const fetchTrailers = id => async dispatch => {
+export const fetchTrailers = (id) => async (dispatch) => {
   const response = await TMDB.get(
     `/movie/${id}/videos?api_key=${KEY}&language=en-US`,
   );
@@ -105,7 +105,7 @@ export const fetchTrailers = id => async dispatch => {
 };
 
 //action creator
-export const fetchSimilarMovies = id => async dispatch => {
+export const fetchSimilarMovies = (id) => async (dispatch) => {
   const response = await TMDB.get(`/movie/${id}/similar?api_key=${KEY}`);
 
   //dispatches action to matching type reducer
@@ -113,7 +113,7 @@ export const fetchSimilarMovies = id => async dispatch => {
 };
 
 //action creator
-export const fetchGenres = () => async dispatch => {
+export const fetchGenres = () => async (dispatch) => {
   const response = await TMDB.get(`/genre/movie/list?api_key=${KEY}
   `);
 
@@ -122,7 +122,7 @@ export const fetchGenres = () => async dispatch => {
 };
 
 //action creator
-export const fetchActor = id => async dispatch => {
+export const fetchActor = (id) => async (dispatch) => {
   const response = await TMDB.get(
     `/person/${id}?api_key=${KEY}&language=en-US`,
   );
@@ -132,7 +132,7 @@ export const fetchActor = id => async dispatch => {
 };
 
 //action creator
-export const fetchActorMovies = id => async dispatch => {
+export const fetchActorMovies = (id) => async (dispatch) => {
   const response = await TMDB.get(
     `/person/${id}/movie_credits?api_key=${KEY}&language=en-US`,
   );
@@ -142,7 +142,7 @@ export const fetchActorMovies = id => async dispatch => {
 };
 
 //action creator
-export const fetchTvPopular = () => async dispatch => {
+export const fetchTvPopular = () => async (dispatch) => {
   const response = await TMDB.get(`/tv/popular?api_key=${KEY}&language=en-US&page=1
   `);
 
@@ -151,7 +151,7 @@ export const fetchTvPopular = () => async dispatch => {
 };
 
 //action creator
-export const fetchTvTopRated = () => async dispatch => {
+export const fetchTvTopRated = () => async (dispatch) => {
   const response = await TMDB.get(
     `/tv/top_rated?api_key=${KEY}&language=en-US&page=1
     `,
@@ -162,7 +162,7 @@ export const fetchTvTopRated = () => async dispatch => {
 };
 
 //action creator
-export const fetchTvAiringToday = () => async dispatch => {
+export const fetchTvAiringToday = () => async (dispatch) => {
   const response = await TMDB.get(
     `/tv/airing_today?api_key=${KEY}&language=en-US`,
   );
@@ -172,7 +172,7 @@ export const fetchTvAiringToday = () => async dispatch => {
 };
 
 //action creator
-export const fetchTvOnAir = () => async dispatch => {
+export const fetchTvOnAir = () => async (dispatch) => {
   const response = await TMDB.get(
     `/tv/on_the_air?api_key=${KEY}&language=en-US`,
   );
@@ -182,13 +182,51 @@ export const fetchTvOnAir = () => async dispatch => {
 };
 
 //action creator
-export const fetchTvTrending = () => async dispatch => {
+export const fetchTvTrending = () => async (dispatch) => {
   const response = await TMDB.get(
     `/trending/tv/day?api_key=${KEY}&language=en-US`,
   );
 
   //dispatches action to matching type reducer
   dispatch({ type: "FETCH_TV_TRENDING", payload: response.data });
+};
+
+//action creator
+export const fetchShowDetails = (id) => async (dispatch) => {
+  const response = await TMDB.get(`/tv/${id}?api_key=${KEY}&language=en-US`);
+
+  //dispatches action to matching type reducer
+  dispatch({ type: "FETCH_SHOW_DETAILS", payload: response.data });
+};
+
+//action creator
+export const fetchShowVideos = (id) => async (dispatch) => {
+  const response = await TMDB.get(
+    `/tv/${id}/videos?api_key=${KEY}&language=en-US`,
+  );
+
+  //dispatches action to matching type reducer
+  dispatch({ type: "FETCH_SHOW_VIDEOS", payload: response.data });
+};
+
+//action creator
+export const fetchShowCredits = (id) => async (dispatch) => {
+  const response = await TMDB.get(
+    `tv/${id}/credits?api_key=${KEY}&language=en-US`,
+  );
+
+  //dispatches action to matching type reducer
+  dispatch({ type: "FETCH_SHOW_CREDITS", payload: response.data });
+};
+
+//action creator
+export const fetchShowSimilar = (id) => async (dispatch) => {
+  const response = await TMDB.get(
+    `/tv/${id}/recommendations?api_key=${KEY}&language=en-US`,
+  );
+
+  //dispatches action to matching type reducer
+  dispatch({ type: "FETCH_SHOW_SIMILAR", payload: response.data });
 };
 
 //creat token
@@ -229,7 +267,7 @@ export const createSignInSession = () => async (dispatch, getState) => {
 
 //sign out
 //this will delete the user session basically signing out
-export const deleteSignOutSession = session => async (dispatch, getState) => {
+export const deleteSignOutSession = (session) => async (dispatch, getState) => {
   const response = await TMDB.delete(
     `https://api.themoviedb.org/3/authentication/session?api_key=80f9558ee00fbe6653d7ee77b88e6eeb
   `,

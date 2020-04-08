@@ -22,6 +22,7 @@ class MovieDetails extends React.Component {
   }
 
   //checks if props changed compares it to previous props
+  //checks if id is the same as previous id
   //the props being changed is the id in the URL to make the request to the api using id
   //scroll to the top
   componentDidUpdate(prevProps) {
@@ -153,7 +154,7 @@ class MovieDetails extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     movie: state.movieDetails,
     credits: state.creditsData.cast,

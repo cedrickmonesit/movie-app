@@ -3,7 +3,8 @@ import { Router, Route, Switch } from "react-router-dom";
 
 import Navigation from "./navigation/Navigation";
 import SearchResults from "./searchresults/SearchResults";
-import MovieDetails from "./moviedetails/MovieDetails";
+import MovieDetails from "./details/MovieDetails";
+import ShowDetails from "./details/showdetails/ShowDetails";
 import ActorDetails from "./actorDetails/ActorDetails";
 import Shows from "./home/Shows";
 import Home from "./home/Home";
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/user/approval" exact component={Approval} />
           <Route path="/user/account" exact component={Account} />
           <Route path="/details/movie/:id" exact component={MovieDetails} />
+          <Route path="/details/show/:id" exact component={ShowDetails} />
           <Route path="/details/actor/:id" exact component={ActorDetails} />
           <Route
             path="/list/search/results/:searchterm"

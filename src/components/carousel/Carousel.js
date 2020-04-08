@@ -24,7 +24,7 @@ class MovieShowCarousel extends React.Component {
   renderMovies() {
     if (this.props.movies) {
       //loops through movies foreach movie returns jsx
-      return this.props.movies.map(movie => {
+      return this.props.movies.map((movie) => {
         return (
           <div key={movie.id} className="slide">
             <Link to={`/details/movie/${movie.id}`}>
@@ -51,10 +51,10 @@ class MovieShowCarousel extends React.Component {
   renderShows() {
     if (this.props.shows) {
       //loops through movies foreach movie returns jsx
-      return this.props.shows.map(show => {
+      return this.props.shows.map((show) => {
         return (
           <div key={show.id} className="slide">
-            <Link to={`/details/movie/${show.id}`}>
+            <Link to={`/details/show/${show.id}`}>
               <div className="carousel-image-container">
                 <img
                   className="slide-image"
@@ -75,6 +75,7 @@ class MovieShowCarousel extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     //settings for this carousel
     const settings = {
       slidesPerPage: 6,

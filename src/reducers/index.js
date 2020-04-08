@@ -21,6 +21,10 @@ import tvTopRatedReducer from "./shows/tvTopRatedReducer";
 import tvOnAir from "./shows/tvOnAir";
 import tvAiringToday from "./shows/tvAiringToday";
 import tvTrending from "./shows/tvTrending";
+import showDetailsReducer from "./shows/showDetailsReducer";
+import showVideosReducer from "./shows/showVideosReducer";
+import showCreditsReducer from "./shows/showCreditsReducer";
+import showSimilarReducer from "./shows/showSimilarReducer";
 
 //sign in
 import signInTokenReducer from "./login/signInTokenReducer";
@@ -51,6 +55,10 @@ export default combineReducers({
   tvOnAir: tvOnAir,
   tvAiringToday: tvAiringToday,
   tvTrending: tvTrending,
+  showDetails: showDetailsReducer,
+  showVideos: showVideosReducer,
+  showCredits: showCreditsReducer,
+  showSimilar: showSimilarReducer,
 
   //sign in
   signInToken: signInTokenReducer,
