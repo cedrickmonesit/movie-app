@@ -240,39 +240,56 @@ export const createSignInToken = () => async (dispatch, getState) => {
     type: "CREATE_SIGN_IN_TOKEN",
     payload: response.data.request_token,
   });
+
+  //store token locally for redirect back to /user/approval
+  localStorage.setItem("token", getState().signInToken);
+
   console.log(getState().signInToken);
+
   //go to the TMDB website with token to get user approval
-  window.open(
-    `https://www.themoviedb.org/authenticate/${getState().signInToken}`,
-    "_newtab",
+  //redirect to TMDB site then redirect back to film flix
+  window.location.replace(
+    `https://www.themoviedb.org/authenticate/${
+      getState().signInToken
+    }?redirect_to=http://192.168.0.13:3000/user/approval`,
   );
 };
 
 //sign in
 //create a session after token has been approved
 //this will be invoked in the approval component
+//session id will be used to get user account information
 export const createSignInSession = () => async (dispatch, getState) => {
   //when the token is approved use the token to create a new session to access user account
   const response = await TMDB.post(
     `/authentication/session/new?api_key=${KEY}`,
-    { request_token: getState().signInToken },
+    //user local storage to access token after redirecting back to film flix from TMDB
+    { request_token: localStorage.getItem("token") },
   );
 
   await dispatch({
     type: "CREATE_SIGN_IN_SESSION",
     payload: response.data.session_id,
   });
+
+  //store session id so refreshing site does not prevent sign out or loss of data
+  localStorage.setItem("session", getState().signInSession);
+
+  //navigate to /user/account
+  history.push("/user/account");
+
   console.log(getState().signInSession);
 };
 
 //sign out
 //this will delete the user session basically signing out
-export const deleteSignOutSession = (session) => async (dispatch, getState) => {
+export const deleteSignOutSession = () => async (dispatch, getState) => {
   const response = await TMDB.delete(
-    `https://api.themoviedb.org/3/authentication/session?api_key=80f9558ee00fbe6653d7ee77b88e6eeb
+    `/authentication/session?api_key=${KEY}
   `,
     {
-      data: { session_id: session },
+      //use local storage to retrieve session id in case of refresh
+      data: { session_id: localStorage.getItem("session") },
     },
   );
 
@@ -280,5 +297,29 @@ export const deleteSignOutSession = (session) => async (dispatch, getState) => {
     type: "DELETE_SIGN_OUT_SESSION",
     payload: response.data,
   });
+
+  //remove local storage of session id for sign out
+  localStorage.removeItem("session");
+  localStorage.removeItem("token");
+
+  //we can also use getState to get the session id from the state
   console.log(getState().signOutSession);
+};
+
+//fetch account details
+//we are using the session id that was created earlier by signing in to get user account information
+export const fetchAccountDetails = () => async (dispatch, getState) => {
+  const response = await TMDB.get(
+    //use local storage to retrieve session id in case of refresh
+    `/account?api_key=${KEY}&session_id=${localStorage.getItem("session")}
+  `,
+  );
+
+  await dispatch({
+    type: "FETCH_ACCOUNT_DETAILS",
+    payload: response.data,
+  });
+
+  //we can also use getState to get the session id from the state
+  console.log(getState().signInSession);
 };

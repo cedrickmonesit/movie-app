@@ -11,7 +11,6 @@ import {
   fetchGenres,
   createSignInSession,
 } from "../../actions";
-import history from "../../history";
 
 //login page
 class Approval extends React.Component {
@@ -26,11 +25,11 @@ class Approval extends React.Component {
 
     //using the token create a user session
     this.props.createSignInSession();
-    history.push("/user/account");
   };
 
   //login is reusing the imagecarousel component resized
   render() {
+    console.log(this.props.store);
     return (
       <div className="main-signin">
         <div className="main-signin-container">
@@ -72,7 +71,7 @@ class Approval extends React.Component {
 }
 
 //getting the nowplaying movies and genres for each movie
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     nowPlaying: state.nowPlayingData.results,
     genres: state.genresData.genres,
