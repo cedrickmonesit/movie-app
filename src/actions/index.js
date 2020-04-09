@@ -244,7 +244,7 @@ export const createSignInToken = () => async (dispatch, getState) => {
   //store token locally for redirect back to /user/approval
   localStorage.setItem("token", getState().signInToken);
 
-  console.log(getState().signInToken);
+  console.log(localStorage.getItem("token"));
 
   //go to the TMDB website with token to get user approval
   //redirect to TMDB site then redirect back to film flix
@@ -292,15 +292,14 @@ export const deleteSignOutSession = () => async (dispatch, getState) => {
       data: { session_id: localStorage.getItem("session") },
     },
   );
+  //remove local storage of session id for sign out
+  localStorage.removeItem("session");
+  localStorage.removeItem("token");
 
   await dispatch({
     type: "DELETE_SIGN_OUT_SESSION",
     payload: response.data,
   });
-
-  //remove local storage of session id for sign out
-  localStorage.removeItem("session");
-  localStorage.removeItem("token");
 
   //we can also use getState to get the session id from the state
   console.log(getState().signOutSession);
