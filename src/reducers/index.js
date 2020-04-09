@@ -31,6 +31,9 @@ import signInTokenReducer from "./login/signInTokenReducer";
 import signInSessionReducer from "./login/signInSessionReducer";
 import signOutSessionReducer from "./login/signOutSessionReducer";
 
+//account
+import accountDetailsReducer from "./account/accountDetailsReducer";
+
 //take reducer put it inside to combineReducers
 export default combineReducers({
   //this will be named in the store
@@ -64,4 +67,7 @@ export default combineReducers({
   signInToken: signInTokenReducer,
   signInSession: signInSessionReducer,
   signOutSession: signOutSessionReducer,
+
+  //account
+  accountDetails: accountDetailsReducer,
 });

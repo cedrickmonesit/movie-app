@@ -10,12 +10,20 @@ import { onInputChange, fetchMovies } from "../../actions";
 import "./navigation.scss";
 import logo from "../../images/logo.png";
 
-const Navigation = props => {
+const Navigation = (props) => {
   //when the hamburger button is clicked toggle is-active class and hide class from elements
   const onClickHamburger = () => {
     document.querySelector(".hamburger").classList.toggle("is-active");
     document.querySelector(".main-nav-top").classList.toggle("hide");
     document.querySelector(".main-nav-bottom").classList.toggle("hide");
+  };
+
+  //will check if user is signed in if they are it will be navigated to account instead of signin
+  const accountOrSignin = () => {
+    if (localStorage.getItem("session")) {
+      return "/user/account";
+    }
+    return "/user/signin";
   };
 
   return (
@@ -47,7 +55,7 @@ const Navigation = props => {
           <Link to="/">
             <AiFillHome className="icon icon-home" />
           </Link>
-          <Link to="/user/signin">
+          <Link to={accountOrSignin}>
             <FaUserAlt className="icon" />
           </Link>
           <Link to="/">
@@ -59,7 +67,7 @@ const Navigation = props => {
         <Link to="/">
           <AiFillHome className="icon icon-home" />
         </Link>
-        <Link onClick={onClickHamburger} to="/user/signin">
+        <Link onClick={onClickHamburger} to={accountOrSignin}>
           <FaUserAlt className="icon" />
         </Link>
         <Link to="/">
@@ -71,7 +79,7 @@ const Navigation = props => {
 };
 
 //filter data from redux store to use in the component as a prop
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return { movies: state.movieData.results, searchTerm: state.searchTerm };
   //this is setting what you want to call the data from the api just to use the data
 };

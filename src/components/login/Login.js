@@ -48,7 +48,6 @@ class Login extends React.Component {
             <button className="main-signin-button" onClick={this.onClickSignIn}>
               Sign In
             </button>
-            <button className="main-signin-button">Guest</button>
             <div className="main-signin-content">
               <p>
                 Signing in will redirect you to the TMDB website to sign into
@@ -71,7 +70,7 @@ class Login extends React.Component {
 }
 
 //getting the nowplaying movies and genres for each movie
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     nowPlaying: state.nowPlayingData.results,
     genres: state.genresData.genres,
