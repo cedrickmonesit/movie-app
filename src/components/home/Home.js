@@ -15,6 +15,7 @@ import {
 } from "../../actions";
 import Carousel from "../carousel/Carousel";
 import ImageCarousel from "../carousel/ImageCarousel";
+import Loader from "../loader/Loader";
 
 class Home extends React.Component {
   //lifecycle method
@@ -28,6 +29,7 @@ class Home extends React.Component {
     this.props.fetchPopular();
     this.props.fetchGenres();
     this.props.fetchTopRated();
+    window.scrollTo(0, 0);
   }
 
   //will render movies with carousels shows are rendered through the shows component
@@ -35,6 +37,7 @@ class Home extends React.Component {
   renderHome(movies, genres) {
     return (
       <React.Fragment>
+        <Loader lazyload={true} />
         <div className="home-container-image-carousel">
           <ImageCarousel
             movies={movies.nowPlaying}
@@ -86,7 +89,7 @@ class Home extends React.Component {
 }
 
 //filter the data from the redux store to the Home component's props for passing onto the Carousel component as props
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     movies: {
       trending: state.trendingData.results,

@@ -11,7 +11,7 @@ import {
   fetchAccountDetails,
 } from "../../actions";
 import history from "../../history";
-//import { AiFillRightSquare } from "react-icons/ai";
+import Loader from "../loader/Loader";
 
 //login page
 class Account extends React.Component {
@@ -73,7 +73,7 @@ class Account extends React.Component {
         </div>
       );
     }
-    return null;
+    return <Loader />;
   }
 
   //login is reusing the imagecarousel component resized
