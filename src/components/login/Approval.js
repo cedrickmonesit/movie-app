@@ -11,6 +11,7 @@ import {
   fetchGenres,
   createSignInSession,
 } from "../../actions";
+import Loader from "../loader/Loader";
 
 //login page
 class Approval extends React.Component {
@@ -27,46 +28,54 @@ class Approval extends React.Component {
     this.props.createSignInSession();
   };
 
-  //login is reusing the imagecarousel component resized
-  render() {
-    console.log(this.props.store);
-    return (
-      <div className="main-signin">
-        <div className="main-signin-container">
-          <header className="main-signin-header">
-            <img
-              className="main-signin-word-logo"
-              src={wordLogo}
-              alt="Film Flix Word Logo"
-            />
-            <h1>Sign In</h1>
-            <p>Film Flix</p>
-          </header>
-          <div className="main-signin-buttons">
-            <div className="main-signin-content main-approval-content">
-              <p>
-                You must approve this site for authorization if you have denied
-                authorization to this site on TMDB, your sign in will not work!
-              </p>
+  renderApproval() {
+    console.log(localStorage.getItem("token"));
+    if (localStorage.getItem("token")) {
+      return (
+        <div className="main-signin">
+          <div className="main-signin-container">
+            <header className="main-signin-header">
+              <img
+                className="main-signin-word-logo"
+                src={wordLogo}
+                alt="Film Flix Word Logo"
+              />
+              <h1>Sign In</h1>
+              <p>Film Flix</p>
+            </header>
+            <div className="main-signin-buttons">
+              <div className="main-signin-content main-approval-content">
+                <p>
+                  You must approve this site for authorization if you have
+                  denied authorization to this site on TMDB, your sign in will
+                  not work!
+                </p>
+              </div>
+              <button
+                className="main-signin-button"
+                onClick={this.onClickCreateSession}
+              >
+                Sign In
+              </button>
             </div>
-            <button
-              className="main-signin-button"
-              onClick={this.onClickCreateSession}
-            >
-              Sign In
-            </button>
+          </div>
+
+          <div className="main-signin-image-carousel">
+            <ImageCarousel
+              movies={this.props.nowPlaying}
+              genres={this.props.genres}
+              title="Now Playing"
+            />
           </div>
         </div>
+      );
+    }
+    return <Loader />;
+  }
 
-        <div className="main-signin-image-carousel">
-          <ImageCarousel
-            movies={this.props.nowPlaying}
-            genres={this.props.genres}
-            title="Now Playing"
-          />
-        </div>
-      </div>
-    );
+  //login is reusing the imagecarousel component resized
+  render() {
+    return <React.Fragment>{this.renderApproval()}</React.Fragment>;
   }
 }
 
@@ -75,7 +84,6 @@ const mapStateToProps = (state) => {
   return {
     nowPlaying: state.nowPlayingData.results,
     genres: state.genresData.genres,
-    session: state.signInSession,
   };
 };
 
