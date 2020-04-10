@@ -15,6 +15,7 @@ import TrailersCarousel from "./trailerscarousel/TrailersCarousel.js";
 import PeopleCarousel from "./peoplecarousel/PeopleCarousel";
 import Carousel from "../carousel/Carousel";
 import renderMovieGenres from "../renderMovieGenres";
+import Loader from "../loader/Loader";
 
 class MovieDetails extends React.Component {
   componentDidMount() {
@@ -150,7 +151,12 @@ class MovieDetails extends React.Component {
   };
   render() {
     console.log(this.props);
-    return <React.Fragment> {this.renderDetails()}</React.Fragment>;
+    return (
+      <React.Fragment>
+        <Loader lazyload={true} />
+        {this.renderDetails()}
+      </React.Fragment>
+    );
   }
 }
 

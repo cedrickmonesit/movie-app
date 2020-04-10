@@ -14,6 +14,7 @@ class Login extends React.Component {
   componentDidMount() {
     this.props.fetchNowPlaying();
     this.props.fetchGenres();
+    window.scrollTo(0, 0);
   }
 
   //user will automaticall navigate to approval component once redirected to user approval of the token created
