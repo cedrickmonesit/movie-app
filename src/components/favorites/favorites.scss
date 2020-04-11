@@ -1,0 +1,15 @@
+.main-favorites {
+  min-height: 100vh;
+  color: white;
+  font-family: inherit;
+  text-align: center;
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 500px) {
+  .main-favorites {
+    margin-top: 5rem;
+  }
+}

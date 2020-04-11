@@ -1,0 +1,35 @@
+.movie-list {
+  font-family: "Odibee Sans", "Acme";
+  text-align: center;
+  color: white;
+}
+
+.movie-list-container {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    6rem
+  ); //auto fill will leave empty cells
+  grid-template-rows: repeat(
+    auto-fit,
+    15rem
+  ); //auto fit will center cells and will share empty cells to center
+  grid-gap: 25px;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.movie-list-container p {
+  margin-top: 0.3rem;
+}
+
+@media (min-width: 500px) {
+  .movie-list-container {
+    grid-template-columns: repeat(auto-fit, 10rem);
+    grid-template-rows: repeat(auto-fit, 20rem);
+  }
+  .movie-list-container p {
+    font-size: 1.5rem;
+  }
+}

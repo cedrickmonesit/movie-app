@@ -13,6 +13,7 @@ import {
   fetchTvOnAir,
   fetchTvTrending,
 } from "../../actions";
+import Loader from "../loader/Loader";
 
 class Shows extends React.Component {
   componentDidMount() {
@@ -30,6 +31,8 @@ class Shows extends React.Component {
     const { shows, genres } = this.props;
     return (
       <div className="home-container">
+        <Loader lazyload={true} />
+
         <div className="home-container-image-carousel">
           <ImageCarousel
             shows={shows.airingToday}
@@ -75,7 +78,7 @@ class Shows extends React.Component {
 }
 
 //filter the data from the redux store to the Home component's props for passing onto the Carousel component as props
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     shows: {
       trending: state.tvTrending.results,
