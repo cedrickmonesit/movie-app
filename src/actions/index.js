@@ -293,8 +293,7 @@ export const deleteSignOutSession = () => async (dispatch, getState) => {
     },
   );
   //remove local storage of session id for sign out
-  localStorage.removeItem("session");
-  localStorage.removeItem("token");
+  localStorage.clear();
 
   await dispatch({
     type: "DELETE_SIGN_OUT_SESSION",
@@ -319,6 +318,43 @@ export const fetchAccountDetails = () => async (dispatch, getState) => {
     payload: response.data,
   });
 
+  //store account id in local storage for use
+  localStorage.setItem("account", getState().accountDetails.id);
+
   //we can also use getState to get the session id from the state
-  console.log(getState().signInSession);
+  console.log(getState().accountDetails.id);
+};
+
+//fetch favorite movies
+export const fetchFavoriteMovies = () => async (dispatch) => {
+  const account = localStorage.getItem("account");
+  const session = localStorage.getItem("session");
+
+  const response = await TMDB.get(
+    //use local storage to retrieve session id in case of refresh
+    `/account/${account}/favorite/movies?api_key=${KEY}&session_id=${session}&language=en-US
+  `,
+  );
+
+  dispatch({
+    type: "FETCH_FAVORITE_MOVIES",
+    payload: response.data.results,
+  });
+};
+
+//fetch favorite tv shows
+export const fetchFavoriteShows = () => async (dispatch) => {
+  const account = localStorage.getItem("account");
+  const session = localStorage.getItem("session");
+
+  const response = await TMDB.get(
+    //use local storage to retrieve session id in case of refresh
+    `/account/${account}/favorite/tv?api_key=${KEY}&session_id=${session}&language=en-US
+  `,
+  );
+
+  dispatch({
+    type: "FETCH_FAVORITE_SHOWS",
+    payload: response.data.results,
+  });
 };

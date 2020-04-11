@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { fetchMovies } from "../../actions";
-import MovieList from "../movielist/MovieList";
+import MovieList from "../list/List";
 import "./searchResults.scss";
 
 class MovieCard extends React.Component {
@@ -37,14 +37,14 @@ class MovieCard extends React.Component {
     return (
       <div className="main-search-results">
         <h1>Search Results For {this.renderSearchTerm()}</h1>
-        <MovieList movies={this.props.movies} />
+        <MovieList items={this.props.movies} />
       </div>
     );
   }
 }
 
 //filter data from redux store to use in the component as a prop
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return { movies: state.movieData.results };
 };
 

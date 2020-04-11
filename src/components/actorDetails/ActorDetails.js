@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { fetchActor, fetchActorMovies } from "../../actions";
 import "./actorDetails.scss";
 import cinema from "../../images/cinema.jpg";
-import MovieList from "../movielist/MovieList";
+import MovieList from "../list/List";
 
 class ActorDetails extends React.Component {
   //when component mounts fetch data and move to top of page
@@ -107,7 +107,7 @@ class ActorDetails extends React.Component {
           {this.renderBiography(this.props.actor.biography)}
           <div className="actor-details-main-popular-roles">
             <h2>Popular Roles</h2>
-            <MovieList movies={this.props.movies} />
+            <MovieList items={this.props.movies} />
           </div>
         </main>
       </div>
@@ -120,7 +120,7 @@ class ActorDetails extends React.Component {
 }
 
 //add actor and movies object from Redux Store to props of this component
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     actor: state.actorData,
     movies: state.actorMoviesData.cast,

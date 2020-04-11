@@ -11,6 +11,7 @@ import Home from "./home/Home";
 import Login from "./login/Login";
 import Approval from "./login/Approval";
 import Account from "./account/Account";
+import Favorites from "./favorites/Favorites";
 import Footer from "./footer/Footer";
 import history from "../history";
 
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/user/signin" exact component={Login} />
           <Route path="/user/approval" exact component={Approval} />
           <Route path="/user/account" exact component={Account} />
+          <Route path="/user/favorites" exact component={Favorites} />
           <Route path="/details/movie/:id" exact component={MovieDetails} />
           <Route path="/details/show/:id" exact component={ShowDetails} />
           <Route path="/details/actor/:id" exact component={ActorDetails} />

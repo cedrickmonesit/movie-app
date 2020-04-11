@@ -26,6 +26,14 @@ const Navigation = (props) => {
     return "/user/signin";
   };
 
+  //will check if user is signed in if they are it will be navigated to account instead of signin
+  const favoritesOrSignin = () => {
+    if (localStorage.getItem("session")) {
+      return "/user/favorites";
+    }
+    return "/user/signin";
+  };
+
   return (
     <nav className="main-nav">
       <button
@@ -58,7 +66,7 @@ const Navigation = (props) => {
           <Link to={accountOrSignin}>
             <FaUserAlt className="icon" />
           </Link>
-          <Link to="/">
+          <Link to={favoritesOrSignin}>
             <FaHeart className="icon" />
           </Link>
         </div>
@@ -70,7 +78,7 @@ const Navigation = (props) => {
         <Link onClick={onClickHamburger} to={accountOrSignin}>
           <FaUserAlt className="icon" />
         </Link>
-        <Link to="/">
+        <Link onClick={onClickHamburger} to={favoritesOrSignin}>
           <FaHeart className="icon" />
         </Link>
       </div>

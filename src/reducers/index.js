@@ -33,6 +33,8 @@ import signOutSessionReducer from "./login/signOutSessionReducer";
 
 //account
 import accountDetailsReducer from "./account/accountDetailsReducer";
+import favoriteMoviesReducer from "./account/favoriteMoviesReducer";
+import favoriteShowsReducer from "./account/favoriteShowsReducer";
 
 //take reducer put it inside to combineReducers
 export default combineReducers({
@@ -70,4 +72,6 @@ export default combineReducers({
 
   //account
   accountDetails: accountDetailsReducer,
+  favoriteMovies: favoriteMoviesReducer,
+  favoriteShows: favoriteShowsReducer,
 });
