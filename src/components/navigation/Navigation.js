@@ -46,11 +46,11 @@ const Navigation = (props) => {
         </span>
       </button>
       <div className="main-nav-top hide">
-        <a href="/">
+        <Link to="/">
           <div className="main-nav-logo-container">
             <img className="main-nav-logo" src={logo} alt="FilmFlix Logo" />
           </div>
-        </a>
+        </Link>
         <div className="main-nav-top-searchbar">
           <SearchBar
             searchTerm={props.searchTerm}

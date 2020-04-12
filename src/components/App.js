@@ -18,6 +18,7 @@ import history from "../history";
 const App = () => {
   //these routes are from Router used to navigate the one page app
   //navigation is using history.push and Link tags to show components
+  //anything outside of the switch will not be changed on the one page app
   return (
     <Router history={history}>
       <Navigation />

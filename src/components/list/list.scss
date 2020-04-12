@@ -26,8 +26,8 @@
 
 @media (min-width: 500px) {
   .movie-list-container {
-    grid-template-columns: repeat(auto-fit, 10rem);
-    grid-template-rows: repeat(auto-fit, 20rem);
+    grid-template-columns: repeat(auto-fill, 10rem);
+    grid-template-rows: repeat(auto-fill, 20rem);
   }
   .movie-list-container p {
     font-size: 1.5rem;

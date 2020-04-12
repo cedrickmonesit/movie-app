@@ -61,6 +61,15 @@
   margin-top: 5%;
 }
 
+//favorites button
+.details-fav-heart {
+  font-size: 1.2rem;
+  position: relative;
+  bottom: 0.5rem;
+  left: 4rem;
+  transition: color 2s;
+}
+
 @media (min-width: 600px) {
   .movie-details-header {
     height: 100vh;
@@ -87,9 +96,18 @@
   .movie-details-main {
     font-size: 1.1rem;
     padding: 0 2rem;
+    padding-bottom: 1rem;
   }
 
   .movie-details-main-genre {
     font-size: 2.5rem;
+  }
+
+  .details-fav-heart {
+    font-size: 1.5rem;
+
+    &:hover {
+      color: #fe346e;
+    }
   }
 }

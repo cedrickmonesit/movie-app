@@ -7,6 +7,19 @@ import TMDB from "../../images/TMDB.png";
 
 //Link tags are Router component used to navigate the one page App
 const Footer = () => {
+  const isSignedIn = (type) => {
+    console.log(localStorage.getItem("session"), "footer");
+    if (localStorage.getItem("session")) {
+      if (type === "profile") {
+        return "/user/account";
+      }
+      if (type === "favorites") {
+        return "/user/favorites";
+      }
+    }
+    return "/user/signin";
+  };
+
   return (
     <div className="main-footer">
       <section className="main-footer-top">
@@ -14,8 +27,8 @@ const Footer = () => {
           <h2>Film Flix</h2>
           <nav className="main-footer-nav">
             <Link to="/">Home </Link>
-            <Link to="/">Profile </Link>
-            <Link to="/">Favorites </Link>
+            <Link to={isSignedIn("profile")}>Profile </Link>
+            <Link to={isSignedIn("favorites")}>Favorites </Link>
           </nav>
         </header>
         <p className="main-footer-item">

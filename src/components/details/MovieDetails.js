@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { FaStar, FaRegStar } from "react-icons/fa";
+import { FaStar, FaRegStar, FaHeart } from "react-icons/fa";
 import Rating from "react-rating";
 
 import {
@@ -9,13 +9,14 @@ import {
   fetchTrailers,
   fetchSimilarMovies,
   fetchGenres,
+  postFavorite,
 } from "../../actions";
 import "./movieDetails.scss";
 import TrailersCarousel from "./trailerscarousel/TrailersCarousel.js";
 import PeopleCarousel from "./peoplecarousel/PeopleCarousel";
 import Carousel from "../carousel/Carousel";
 import renderMovieGenres from "../renderMovieGenres";
-import Loader from "../loader/Loader";
+//import Loader from "../loader/Loader";
 
 class MovieDetails extends React.Component {
   componentDidMount() {
@@ -91,6 +92,16 @@ class MovieDetails extends React.Component {
     return null;
   }
 
+  //this method is a callback function from onclick so it must be an arrow function
+  onClickAddToFavorites = () => {
+    console.log("Added to favorites");
+    const id = this.props.match.params.id;
+    //post action creator to add to favorite movies list
+    this.props.postFavorite(id, "movie", true);
+    //changes color to secondary after clicked
+    document.querySelector(".details-fav-heart").style.color = "#fe346e";
+  };
+
   renderDetails = () => {
     if (this.props.movie) {
       return (
@@ -116,6 +127,10 @@ class MovieDetails extends React.Component {
                   fullSymbol={<FaStar className="movie-details-star-rating" />}
                   initialRating={this.props.movie.vote_average / 2}
                   readonly
+                />
+                <FaHeart
+                  className="icon details-fav-heart"
+                  onClick={this.onClickAddToFavorites}
                 />
                 <p>
                   {`${this.props.movie.status} | ${this.renderDate(
@@ -150,10 +165,10 @@ class MovieDetails extends React.Component {
     return;
   };
   render() {
-    console.log(this.props);
+    console.log(this.props.status);
     return (
       <React.Fragment>
-        <Loader lazyload={true} />
+        {/*<Loader lazyload={true} />*/}
         {this.renderDetails()}
       </React.Fragment>
     );
@@ -167,6 +182,7 @@ const mapStateToProps = (state) => {
     trailers: state.trailersData.results,
     similarMovies: state.similarMoviesData.results,
     genres: state.genresData.genres,
+    status: state.postFavoriteStatus.status_message,
   };
 };
 
@@ -176,4 +192,5 @@ export default connect(mapStateToProps, {
   fetchTrailers,
   fetchSimilarMovies,
   fetchGenres,
+  postFavorite,
 })(MovieDetails);

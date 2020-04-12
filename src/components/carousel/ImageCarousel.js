@@ -10,7 +10,7 @@ class ImageCarousel extends React.Component {
   //renders imagecarousel with movies values
   renderMovies() {
     //loops through movies foreach movie returns jsx
-    return this.props.movies.map(movie => {
+    return this.props.movies.map((movie) => {
       return (
         <div key={movie.id} className="img-slide">
           <Link to={`/details/movie/${movie.id}`}>
@@ -37,10 +37,10 @@ class ImageCarousel extends React.Component {
   //renders imagecarousel with shows values
   renderShows() {
     //loops through movies foreach show returns jsx
-    return this.props.shows.map(show => {
+    return this.props.shows.map((show) => {
       return (
         <div key={show.id} className="img-slide">
-          <Link to={`/details/movie/${show.id}`}>
+          <Link to={`/details/show/${show.id}`}>
             <div
               className="img-slide-image"
               style={{

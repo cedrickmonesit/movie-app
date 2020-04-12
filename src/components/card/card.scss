@@ -2,6 +2,7 @@
   border-radius: 5rem;
   opacity: 1;
   transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .movie-card a {
@@ -44,6 +45,27 @@
   font-size: 1.3rem;
 }
 
+//card delete button & cover for svg onlcik handler
+.card-delete-btn-cover {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  background: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 1rem;
+  z-index: 5;
+}
+
+.card-delete-btn {
+  position: absolute;
+  top: 3%;
+  right: 2.5%;
+  font-size: 2rem;
+  opacity: 1;
+  transition: opacity 2s;
+}
+
 @media (min-width: 500px) {
   .movie-card {
     opacity: 0.6;
@@ -61,10 +83,18 @@
       font-size: 1rem;
       margin-top: 0;
     }
-  }
 
-  .movie-card:hover {
-    transform: scale(1.1);
-    opacity: 1;
+    .card-delete-btn {
+      opacity: 0;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      opacity: 1;
+
+      .card-delete-btn {
+        opacity: 1;
+      }
+    }
   }
 }
