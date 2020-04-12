@@ -11,8 +11,8 @@ const Loader = (props) => {
       loader.style.opacity = "0";
       setTimeout(() => {
         loader.classList.add("loader-hide");
-      }, 2500);
-    }, 2000);
+      }, 2000);
+    }, 1000);
   };
 
   //if lazyload is true the loader will become a lazyloader

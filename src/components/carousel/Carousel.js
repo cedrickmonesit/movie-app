@@ -115,6 +115,7 @@ class MovieShowCarousel extends React.Component {
           arrowLeft={<FaChevronLeft className="carousel-arrow-left" />}
           arrowRight={<FaChevronRight className="carousel-arrow-right" />}
           addArrowClickHandler
+          className="wow fadeIn delay-1s"
         >
           {this.renderMovies()}
         </Carousel>
@@ -126,6 +127,7 @@ class MovieShowCarousel extends React.Component {
           arrowLeft={<FaChevronLeft className="carousel-arrow-left" />}
           arrowRight={<FaChevronRight className="carousel-arrow-right" />}
           addArrowClickHandler
+          className="wow fadeIn delay-0.5s"
         >
           {this.renderShows()}
         </Carousel>
