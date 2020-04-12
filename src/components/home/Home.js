@@ -79,7 +79,6 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log(this.props, "Home component");
     return (
       <div className="home-container">
         {this.renderHome(this.props.movies, this.props.genres)}

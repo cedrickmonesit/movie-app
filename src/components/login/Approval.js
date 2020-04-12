@@ -22,14 +22,11 @@ class Approval extends React.Component {
   }
 
   onClickCreateSession = () => {
-    console.log("Session Created!");
-
     //using the token create a user session
     this.props.createSignInSession();
   };
 
   renderApproval() {
-    console.log(localStorage.getItem("token"));
     if (localStorage.getItem("token")) {
       return (
         <div className="main-signin">

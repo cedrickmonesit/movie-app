@@ -37,8 +37,6 @@ class Favorites extends React.Component {
 
   //login is reusing the imagecarousel component resized
   render() {
-    console.log(this.props);
-
     return (
       <React.Fragment>
         <Loader lazyload={true} />

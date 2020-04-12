@@ -23,8 +23,6 @@ class Account extends React.Component {
   }
 
   onClickDeleteSession = () => {
-    console.log("Signed Out!");
-
     //using the token create a user session
     this.props.deleteSignOutSession();
     history.push("/user/signin");
@@ -78,7 +76,6 @@ class Account extends React.Component {
 
   //login is reusing the imagecarousel component resized
   render() {
-    console.log(this.props.account);
     return this.renderAccount();
   }
 }

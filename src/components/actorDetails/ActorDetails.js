@@ -18,7 +18,6 @@ class ActorDetails extends React.Component {
     const id = this.props.match.params.id;
     this.props.fetchActor(id);
     this.props.fetchActorMovies(id);
-    console.log(id);
   }
 
   //birthday date filtering from year-month-day to month/day/year and age
