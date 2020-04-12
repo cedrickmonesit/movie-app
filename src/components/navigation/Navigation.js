@@ -47,7 +47,7 @@ const Navigation = (props) => {
       </button>
       <div className="main-nav-top hide">
         <Link to="/">
-          <div className="main-nav-logo-container">
+          <div className="main-nav-logo-container animated bounceIn delay-4s">
             <img className="main-nav-logo" src={logo} alt="FilmFlix Logo" />
           </div>
         </Link>
@@ -61,13 +61,13 @@ const Navigation = (props) => {
 
         <div className="main-nav-top-icons">
           <Link to="/">
-            <AiFillHome className="icon icon-home" />
+            <AiFillHome className="icon icon-home animated bounceIn delay-4s" />
           </Link>
           <Link to={accountOrSignin}>
-            <FaUserAlt className="icon" />
+            <FaUserAlt className="icon animated bounceIn delay-4s" />
           </Link>
           <Link to={favoritesOrSignin}>
-            <FaHeart className="icon" />
+            <FaHeart className="icon animated bounceIn delay-4s" />
           </Link>
         </div>
       </div>

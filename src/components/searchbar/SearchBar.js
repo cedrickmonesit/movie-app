@@ -5,13 +5,13 @@ import "./searchbar.scss";
 
 //reference MovieList Component, for the props being used
 class SearchBar extends React.Component {
-  onInputChange = event => {
+  onInputChange = (event) => {
     //onInputChange function from props
     //onInputChange is an action creator
     this.props.onInputChange(event.target.value);
   };
 
-  onFormSubmit = event => {
+  onFormSubmit = (event) => {
     event.preventDefault(); //Prevents page from refresh on submit of the form
 
     //fetchMovies function is from props
@@ -28,7 +28,10 @@ class SearchBar extends React.Component {
     //onInputChange is from props
     //onInputChange is an action creator
     return (
-      <form onSubmit={this.onFormSubmit} className="searchbar">
+      <form
+        onSubmit={this.onFormSubmit}
+        className="searchbar animated fadeInDown delay-4s "
+      >
         <input
           className="searchbar-input"
           placeholder="search..."
