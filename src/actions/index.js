@@ -244,8 +244,6 @@ export const createSignInToken = () => async (dispatch, getState) => {
   //store token locally for redirect back to /user/approval
   localStorage.setItem("token", getState().signInToken);
 
-  console.log(localStorage.getItem("token"));
-
   //go to the TMDB website with token to get user approval
   //redirect to TMDB site then redirect back to film flix
   window.location.replace(
@@ -278,8 +276,6 @@ export const createSignInSession = () => async (dispatch, getState) => {
 
   //navigate to /user/account
   history.push("/user/account");
-
-  console.log(getState().signInSession);
 };
 
 //sign out
@@ -301,9 +297,6 @@ export const deleteSignOutSession = () => async (dispatch, getState) => {
     type: "DELETE_SIGN_OUT_SESSION",
     payload: response.data,
   });
-
-  //we can also use getState to get the session id from the state
-  console.log(getState().signOutSession);
 };
 
 //fetch account details
@@ -322,9 +315,6 @@ export const fetchAccountDetails = () => async (dispatch, getState) => {
 
   //store account id in local storage for use
   localStorage.setItem("account", getState().accountDetails.id);
-
-  //we can also use getState to get the session id from the state
-  console.log(getState().accountDetails.id);
 };
 
 //fetch favorite movies

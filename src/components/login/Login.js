@@ -20,7 +20,6 @@ class Login extends React.Component {
   //user will automaticall navigate to approval component once redirected to user approval of the token created
   //if token is denied by user, approval page will not be able to create a session
   onClickSignIn = () => {
-    console.log("Token Created!");
     this.props.createSignInToken();
     this.onClickNavToApproval();
   };

@@ -42,7 +42,6 @@ class MovieDetails extends React.Component {
     this.props.fetchTrailers(id);
     this.props.fetchSimilarMovies(id);
     this.props.fetchGenres();
-    console.log(id);
   }
 
   renderSimilarMovies(similarMovies) {
@@ -94,7 +93,6 @@ class MovieDetails extends React.Component {
 
   //this method is a callback function from onclick so it must be an arrow function
   onClickAddToFavorites = () => {
-    console.log("Added to favorites");
     const id = this.props.match.params.id;
     //post action creator to add to favorite movies list
     this.props.postFavorite(id, "movie", true);
@@ -165,7 +163,6 @@ class MovieDetails extends React.Component {
     return;
   };
   render() {
-    console.log(this.props.status);
     return (
       <React.Fragment>
         {/*<Loader lazyload={true} />*/}

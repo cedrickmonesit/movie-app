@@ -8,7 +8,6 @@ import TMDB from "../../images/TMDB.png";
 //Link tags are Router component used to navigate the one page App
 const Footer = () => {
   const isSignedIn = (type) => {
-    console.log(localStorage.getItem("session"), "footer");
     if (localStorage.getItem("session")) {
       if (type === "profile") {
         return "/user/account";

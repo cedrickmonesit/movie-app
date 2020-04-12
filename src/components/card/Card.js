@@ -23,8 +23,6 @@ class Card extends React.Component {
   //handle target element for event bubbling
   handleCardClickEvent = (event, id, type) => {
     if (event.target.classList.contains("card-delete-btn-cover")) {
-      console.log(event.target);
-
       if (type === "tv" || this.props.type === "shows") {
         this.props.postFavorite(id, "tv", false);
       } else {

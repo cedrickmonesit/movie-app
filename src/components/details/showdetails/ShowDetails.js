@@ -42,7 +42,6 @@ class ShowDetails extends React.Component {
     this.props.fetchShowCredits(id);
     this.props.fetchShowSimilar(id);
     this.props.fetchGenres();
-    console.log(id);
   }
 
   renderSimilarShows(similar) {
@@ -163,7 +162,6 @@ class ShowDetails extends React.Component {
     return;
   };
   render() {
-    console.log(this.props.status);
     return (
       <React.Fragment>
         <Loader lazyload={true} /> {this.renderDetails()}

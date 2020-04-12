@@ -75,7 +75,6 @@ class MovieShowCarousel extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     //settings for this carousel
     const settings = {
       slidesPerPage: 6,

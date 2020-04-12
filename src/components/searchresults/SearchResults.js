@@ -33,7 +33,6 @@ class MovieCard extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="main-search-results">
         <h1>Search Results For {this.renderSearchTerm()}</h1>
