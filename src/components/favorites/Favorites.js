@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { fetchFavoriteMovies, fetchFavoriteShows } from "../../actions";
 import MovieList from "../list/List";
 import "./favorites.scss";
+import Loader from "../loader/Loader";
 
 //login page
 class Favorites extends React.Component {
@@ -13,13 +14,23 @@ class Favorites extends React.Component {
     this.props.fetchFavoriteShows();
   }
 
+  //this checks if pevious props changed and fetches fetchFavoriteMovies again and rerenders component
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      //if session still exists fetch favorites
+      //this conditional prevents fetch of favorites when user signes out since the props technically updated to nothing
+      this.props.fetchFavoriteMovies();
+      this.props.fetchFavoriteShows();
+    }
+  }
+
   renderFavorites() {
     return (
       <React.Fragment>
-        <h1>Movies</h1>
-        <MovieList items={this.props.movies} />
-        <h1>Shows</h1>
-        <MovieList items={this.props.shows} type="shows" />
+        <h2>Movies</h2>
+        <MovieList items={this.props.movies} isDeletable={true} />
+        <h2>Shows</h2>
+        <MovieList items={this.props.shows} type="shows" isDeletable={true} />
       </React.Fragment>
     );
   }
@@ -29,10 +40,13 @@ class Favorites extends React.Component {
     console.log(this.props);
 
     return (
-      <div className="main-favorites">
-        <h1>Favorites</h1>
-        {this.renderFavorites()}
-      </div>
+      <React.Fragment>
+        <Loader lazyload={true} />
+        <div className="main-favorites">
+          <h1>Favorites</h1>
+          {this.renderFavorites()}
+        </div>
+      </React.Fragment>
     );
   }
 }

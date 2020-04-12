@@ -35,6 +35,7 @@ import signOutSessionReducer from "./login/signOutSessionReducer";
 import accountDetailsReducer from "./account/accountDetailsReducer";
 import favoriteMoviesReducer from "./account/favoriteMoviesReducer";
 import favoriteShowsReducer from "./account/favoriteShowsReducer";
+import postFavoriteReducer from "./account/postFavoriteReducer";
 
 //take reducer put it inside to combineReducers
 export default combineReducers({
@@ -74,4 +75,5 @@ export default combineReducers({
   accountDetails: accountDetailsReducer,
   favoriteMovies: favoriteMoviesReducer,
   favoriteShows: favoriteShowsReducer,
+  postFavoriteStatus: postFavoriteReducer,
 });

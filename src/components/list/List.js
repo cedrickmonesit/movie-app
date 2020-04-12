@@ -12,7 +12,11 @@ class List extends React.Component {
       return (
         <React.Fragment>
           <div className="movie-list-container">
-            <Card type={this.props.type} items={this.props.items} />
+            <Card
+              type={this.props.type}
+              items={this.props.items}
+              isDeletable={this.props.isDeletable}
+            />
           </div>
         </React.Fragment>
       );

@@ -264,6 +264,7 @@ export const createSignInSession = () => async (dispatch, getState) => {
   const response = await TMDB.post(
     `/authentication/session/new?api_key=${KEY}`,
     //user local storage to access token after redirecting back to film flix from TMDB
+    //request body
     { request_token: localStorage.getItem("token") },
   );
 
@@ -289,10 +290,11 @@ export const deleteSignOutSession = () => async (dispatch, getState) => {
   `,
     {
       //use local storage to retrieve session id in case of refresh
+      //request body
       data: { session_id: localStorage.getItem("session") },
     },
   );
-  //remove local storage of session id for sign out
+  //removes everything in localstorage such as session id and token and account id
   localStorage.clear();
 
   await dispatch({
@@ -356,5 +358,27 @@ export const fetchFavoriteShows = () => async (dispatch) => {
   dispatch({
     type: "FETCH_FAVORITE_SHOWS",
     payload: response.data.results,
+  });
+};
+
+//add to favorites
+export const postFavorite = (id, media_type, isFavorite) => async (
+  dispatch,
+) => {
+  const account = localStorage.getItem("account");
+  const session = localStorage.getItem("session");
+
+  const response = await TMDB.post(
+    `/account/${account}/favorite?api_key=${KEY}&session_id=${session}`,
+    //request body
+    //string, string, boolean
+    { media_type: media_type, media_id: id, favorite: isFavorite },
+    //headers
+    { "content-type": "application/json;charset=utf-8" },
+  );
+
+  await dispatch({
+    type: "POST_FAVORITE",
+    payload: response.data,
   });
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { FaStar, FaRegStar } from "react-icons/fa";
+import { FaStar, FaRegStar, FaHeart } from "react-icons/fa";
 import Rating from "react-rating";
 
 import {
@@ -9,6 +9,7 @@ import {
   fetchShowCredits,
   fetchShowSimilar,
   fetchGenres,
+  postFavorite,
 } from "../../../actions";
 import "../movieDetails.scss";
 import TrailersCarousel from "../trailerscarousel/TrailersCarousel";
@@ -56,6 +57,7 @@ class ShowDetails extends React.Component {
     );
   }
 
+  //if there are no trailers return null
   renderVideos(videos) {
     if (videos === undefined || videos.length === 0) {
       return null;
@@ -91,6 +93,16 @@ class ShowDetails extends React.Component {
     return null;
   }
 
+  //this method is a callback function from onclick so it must be an arrow function
+  onClickAddToFavorites = () => {
+    console.log("Added to favorites");
+    const id = this.props.match.params.id;
+    //post action creators for favorite tv shows list
+    this.props.postFavorite(id, "tv", true);
+    //change color to secondary after click
+    document.querySelector(".details-fav-heart").style.color = "#fe346e";
+  };
+
   renderDetails = () => {
     if (this.props.show) {
       return (
@@ -105,10 +117,10 @@ class ShowDetails extends React.Component {
               <img
                 className="movie-details-poster"
                 src={`http://image.tmdb.org/t/p/w500/${this.props.show.poster_path}`}
-                alt={this.props.show.title}
+                alt={this.props.show.name}
               />
               <div className="movie-details-title">
-                <h1>{this.props.show.title}</h1>
+                <h1>{this.props.show.name}</h1>
                 <Rating
                   emptySymbol={
                     <FaRegStar className="movie-details-star-rating" />
@@ -127,6 +139,10 @@ class ShowDetails extends React.Component {
                   {renderMovieGenres(this.props.show.genres, this.props.genres)}
                 </p>
               </div>
+              <FaHeart
+                className="icon details-fav-heart"
+                onClick={this.onClickAddToFavorites}
+              />
             </div>
           </header>
           <main className="movie-details-main">
@@ -147,7 +163,7 @@ class ShowDetails extends React.Component {
     return;
   };
   render() {
-    console.log(this.props);
+    console.log(this.props.status);
     return (
       <React.Fragment>
         <Loader lazyload={true} /> {this.renderDetails()}
@@ -163,6 +179,7 @@ const mapStateToProps = (state) => {
     videos: state.showVideos.results,
     similar: state.showSimilar.results,
     genres: state.genresData.genres,
+    status: state.postFavoriteStatus.status_message,
   };
 };
 
@@ -172,4 +189,5 @@ export default connect(mapStateToProps, {
   fetchShowCredits,
   fetchShowSimilar,
   fetchGenres,
+  postFavorite,
 })(ShowDetails);
