@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/film-flix/static/css/main.731f9b7e.chunk.css",
-    "main.js": "/film-flix/static/js/main.837b5948.chunk.js",
-    "main.js.map": "/film-flix/static/js/main.837b5948.chunk.js.map",
+    "main.js": "/film-flix/static/js/main.2ec5a8df.chunk.js",
+    "main.js.map": "/film-flix/static/js/main.2ec5a8df.chunk.js.map",
     "runtime-main.js": "/film-flix/static/js/runtime-main.43715149.js",
     "runtime-main.js.map": "/film-flix/static/js/runtime-main.43715149.js.map",
     "static/css/2.ca900277.chunk.css": "/film-flix/static/css/2.ca900277.chunk.css",
     "static/js/2.03c71b50.chunk.js": "/film-flix/static/js/2.03c71b50.chunk.js",
     "static/js/2.03c71b50.chunk.js.map": "/film-flix/static/js/2.03c71b50.chunk.js.map",
     "index.html": "/film-flix/index.html",
-    "precache-manifest.b7a62100f933caa3086f2082a43515f6.js": "/film-flix/precache-manifest.b7a62100f933caa3086f2082a43515f6.js",
+    "precache-manifest.39cdb97d71d17b2f80f4e03526fc9462.js": "/film-flix/precache-manifest.39cdb97d71d17b2f80f4e03526fc9462.js",
     "service-worker.js": "/film-flix/service-worker.js",
     "static/css/2.ca900277.chunk.css.map": "/film-flix/static/css/2.ca900277.chunk.css.map",
     "static/css/main.731f9b7e.chunk.css.map": "/film-flix/static/css/main.731f9b7e.chunk.css.map",
@@ -23,6 +23,6 @@
     "static/css/2.ca900277.chunk.css",
     "static/js/2.03c71b50.chunk.js",
     "static/css/main.731f9b7e.chunk.css",
-    "static/js/main.837b5948.chunk.js"
+    "static/js/main.2ec5a8df.chunk.js"
   ]
 }
