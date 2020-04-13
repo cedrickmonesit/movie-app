@@ -249,7 +249,7 @@ export const createSignInToken = () => async (dispatch, getState) => {
   window.location.replace(
     `https://www.themoviedb.org/authenticate/${
       getState().signInToken
-    }?redirect_to=http://192.168.0.13:3000/user/approval`,
+    }?redirect_to=http://192.168.0.13:3000/film-flix/user/approval`,
   );
 };
 
