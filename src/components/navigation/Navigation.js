@@ -47,11 +47,11 @@ const Navigation = (props) => {
       </button>
       <div className="main-nav-top hide">
         <Link to="/">
-          <div className="main-nav-logo-container animated bounceIn delay-4s">
+          <div className="main-nav-logo-container animated bounceIn">
             <img className="main-nav-logo" src={logo} alt="FilmFlix Logo" />
           </div>
         </Link>
-        <div className="main-nav-top-searchbar">
+        <div className="main-nav-top-searchbar ">
           <SearchBar
             searchTerm={props.searchTerm}
             fetchMovies={props.fetchMovies}
@@ -61,25 +61,25 @@ const Navigation = (props) => {
 
         <div className="main-nav-top-icons">
           <Link to="/">
-            <AiFillHome className="icon icon-home animated bounceIn delay-4s" />
+            <AiFillHome className="icon icon-home animated bounceIn top-icon" />
           </Link>
           <Link to={accountOrSignin}>
-            <FaUserAlt className="icon animated bounceIn delay-4s" />
+            <FaUserAlt className="icon animated bounceIn top-icon" />
           </Link>
           <Link to={favoritesOrSignin}>
-            <FaHeart className="icon animated bounceIn delay-4s" />
+            <FaHeart className="icon animated bounceIn top-icon" />
           </Link>
         </div>
       </div>
       <div className="main-nav-bottom hide">
         <Link to="/">
-          <AiFillHome className="icon icon-home" />
+          <AiFillHome className="icon icon-home animated bounceIn" />
         </Link>
         <Link onClick={onClickHamburger} to={accountOrSignin}>
-          <FaUserAlt className="icon" />
+          <FaUserAlt className="icon animated bounceIn" />
         </Link>
         <Link onClick={onClickHamburger} to={favoritesOrSignin}>
-          <FaHeart className="icon" />
+          <FaHeart className="icon animated bounceIn" />
         </Link>
       </div>
     </nav>
