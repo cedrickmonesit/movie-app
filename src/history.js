@@ -5,6 +5,6 @@ import { createBrowserHistory } from "history";
 
 //We have to create a plain router instead of a browser router
 //Since we are managing the history ourselves
-export default createBrowserHistory({ basename: "/film-flix" });
+export default createBrowserHistory();
 
 //Having control of the History gives us the ability to move around the pages using History.push usually used in action creators
