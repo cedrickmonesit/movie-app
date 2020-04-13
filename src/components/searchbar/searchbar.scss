@@ -23,3 +23,9 @@
   font-size: 2rem;
   color: white;
 }
+
+@media (min-width: 700px) {
+  .searchbar {
+    -webkit-animation-delay: 4s;
+  }
+}

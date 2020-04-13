@@ -82,6 +82,12 @@
 }
 
 @media (min-width: 700px) {
+  .top-icon {
+    -webkit-animation-delay: 4s;
+  }
+  .main-nav-logo-container {
+    -webkit-animation-delay: 4s;
+  }
   .hamburger {
     display: none;
   }
@@ -117,6 +123,15 @@
   .main-nav-bottom {
     height: 14%;
   }
+  .main-nav-logo-container {
+    -webkit-animation-delay: 0s;
+  }
+  .top-icon {
+    -webkit-animation-delay: 0s;
+  }
+  .searchbar {
+    -webkit-animation-delay: 0s;
+  }
 }
 
 //older devices
@@ -126,6 +141,12 @@
   .main-nav-bottom {
     height: 11%;
   }
+  .top-icon {
+    -webkit-animation-delay: 0s;
+  }
+  .searchbar {
+    -webkit-animation-delay: 0s;
+  }
 }
 
 //iphone 5 & iphone 5s landscape
@@ -133,5 +154,11 @@
   .main-nav-top,
   .main-nav-bottom {
     height: 20%;
+  }
+  .top-icon {
+    -webkit-animation-delay: 0s;
+  }
+  .searchbar {
+    -webkit-animation-delay: 0s;
   }
 }

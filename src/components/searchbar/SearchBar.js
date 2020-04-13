@@ -30,7 +30,7 @@ class SearchBar extends React.Component {
     return (
       <form
         onSubmit={this.onFormSubmit}
-        className="searchbar animated fadeInDown delay-4s "
+        className="searchbar animated fadeInDown"
       >
         <input
           className="searchbar-input"
