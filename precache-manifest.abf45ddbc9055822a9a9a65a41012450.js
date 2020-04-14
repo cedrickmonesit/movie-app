@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "bcd542b66eed3af3dd4732c59834ab5a",
+    "revision": "a35fe1ec8fd81830736abf1ac5690ad8",
     "url": "/film-flix/index.html"
   },
   {
-    "revision": "d225cce6300c1ecfb341",
+    "revision": "b205befe8a967ab49e28",
     "url": "/film-flix/static/css/2.ca900277.chunk.css"
   },
   {
-    "revision": "f220004c000ef90fa7f3",
+    "revision": "2f744e5ed171ad37780f",
     "url": "/film-flix/static/css/main.731f9b7e.chunk.css"
   },
   {
-    "revision": "d225cce6300c1ecfb341",
-    "url": "/film-flix/static/js/2.03c71b50.chunk.js"
+    "revision": "b205befe8a967ab49e28",
+    "url": "/film-flix/static/js/2.a399d151.chunk.js"
   },
   {
     "revision": "7d214800dd318343323fda2f2d085839",
-    "url": "/film-flix/static/js/2.03c71b50.chunk.js.LICENSE.txt"
+    "url": "/film-flix/static/js/2.a399d151.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f220004c000ef90fa7f3",
-    "url": "/film-flix/static/js/main.2ec5a8df.chunk.js"
+    "revision": "2f744e5ed171ad37780f",
+    "url": "/film-flix/static/js/main.1994071b.chunk.js"
   },
   {
     "revision": "69b55510c3e8c7224da4",
