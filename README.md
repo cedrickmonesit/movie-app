@@ -50,6 +50,8 @@ Enjoy!
 * [Redux](https://redux.js.org/) - State Management
 * [SASS](https://sass-lang.com/) - CSS Pre-Processor
 * [TMDB](https://www.themoviedb.org/) - The Movie Database API
+* [Axios](https://github.com/axios/axios) - Node Module
+
 
 ## Contributors
 
