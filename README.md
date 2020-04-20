@@ -35,7 +35,7 @@ npm install
 3. Start the server
 
 ```
-npm run start
+npm start
 ```
 
 4. Explore
